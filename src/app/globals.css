@@ -1,26 +1,1218 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================================================
+   ClientSpace Global Color Design System
+   Architecture: Deep Navy Blue & Elegant Royal-Blue Gradients
+   Target: Premium, Trustworthy, Modern SaaS
+   ========================================================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ------------------------------------------------------------------------
+     1. Brand Palette Foundation (Canonical Navy & Royal Blue Scale)
+     ------------------------------------------------------------------------ */
+  --brand-deep-navy: #0B1537;
+  --brand-primary-navy: #14265C;
+  --brand-royal-blue: #2447A8;
+  --brand-accent-blue: #4778F5;
+  --brand-light-blue: #EAF0FF;
+
+  /* Full Scale */
+  --brand-50: #EAF0FF;
+  --brand-100: #D6E3FF;
+  --brand-200: #B0C9FF;
+  --brand-300: #7DA8FE;
+  --brand-400: #4778F5;
+  --brand-500: #2E5DE0;
+  --brand-600: #2447A8;
+  --brand-700: #1A3582;
+  --brand-800: #14265C;
+  --brand-900: #0B1537;
+  --brand-950: #080F22;
+
+  /* ------------------------------------------------------------------------
+     2. Page & Layout Surfaces (Light Mode)
+     ------------------------------------------------------------------------ */
+  --background: #F6F8FC;
+  --page-background: #F6F8FC;
+  --content-background: #FFFFFF;
+  --secondary-background: #EEF2F8;
+  --subtle-background: #F4F7FC;
+  --elevated-surface: #FFFFFF;
+  --inverted-background: #0B1537;
+  --overlay: rgba(11, 21, 55, 0.45);
+  --backdrop: rgba(11, 21, 55, 0.25);
+
+  /* ------------------------------------------------------------------------
+     3. Typography & Text Roles (Light Mode)
+     ------------------------------------------------------------------------ */
+  --foreground: #101828;
+  --heading-foreground: #0B1537;
+  --title-foreground: #0E1B42;
+  --subtitle-foreground: #3E4D6B;
+  --paragraph-foreground: #344054;
+  --secondary-foreground: #667085;
+  --secondary-text: #667085;
+  --muted-foreground: #667085;
+  --placeholder-foreground: #98A2B3;
+  --disabled-foreground: #B2BAC7;
+  --link-foreground: #2447A8;
+  --link-hover-foreground: #14265C;
+  --inverted-foreground: #FFFFFF;
+  --primary-foreground: #FFFFFF;
+  --gradient-foreground: #FFFFFF;
+
+  /* ------------------------------------------------------------------------
+     4. Brand & Ambient Gradients (Light Mode)
+     ------------------------------------------------------------------------ */
+  --gradient-brand: linear-gradient(135deg, #0B1537 0%, #14265C 50%, #2447A8 100%);
+  --gradient-primary-btn: linear-gradient(135deg, #14265C 0%, #2447A8 100%);
+  --gradient-primary-btn-hover: linear-gradient(135deg, #0B1537 0%, #1A3478 100%);
+  --gradient-sidebar: linear-gradient(180deg, #FFFFFF 0%, #F8FAFD 100%);
+  --gradient-sidebar-brand: linear-gradient(180deg, #0B1537 0%, #080F26 100%);
+  --gradient-active-nav: linear-gradient(135deg, rgba(36, 71, 168, 0.12) 0%, rgba(71, 120, 245, 0.06) 100%);
+  --gradient-card: linear-gradient(180deg, #FFFFFF 0%, #F9FBFE 100%);
+  --gradient-hero: radial-gradient(ellipse at 50% 0%, rgba(36, 71, 168, 0.08) 0%, rgba(246, 248, 252, 0) 70%), linear-gradient(180deg, #F0F4FC 0%, #F6F8FC 100%);
+  --gradient-ambient: radial-gradient(circle at 10% 20%, rgba(71, 120, 245, 0.06) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(36, 71, 168, 0.05) 0%, transparent 40%);
+  --gradient-highlight: linear-gradient(135deg, rgba(71, 120, 245, 0.25) 0%, rgba(36, 71, 168, 0.08) 100%);
+  --gradient-glow: radial-gradient(circle, rgba(36, 71, 168, 0.18) 0%, transparent 70%);
+
+  /* ------------------------------------------------------------------------
+     5. Buttons (Light Mode)
+     ------------------------------------------------------------------------ */
+  --btn-primary-bg: #14265C;
+  --btn-primary-fg: #FFFFFF;
+  --btn-primary-hover: #0B1537;
+  --btn-primary-active: #080F26;
+
+  --btn-gradient-bg: var(--gradient-primary-btn);
+  --btn-gradient-fg: #FFFFFF;
+  --btn-gradient-hover: var(--gradient-primary-btn-hover);
+  --btn-gradient-active: linear-gradient(135deg, #080F26 0%, #14265C 100%);
+
+  --btn-secondary-bg: #EEF2F8;
+  --btn-secondary-fg: #14265C;
+  --btn-secondary-hover: #E2E9F4;
+  --btn-secondary-active: #D6E0EF;
+
+  --btn-outline-bg: transparent;
+  --btn-outline-fg: #14265C;
+  --btn-outline-border: #D0DBEC;
+  --btn-outline-hover: #F0F4FA;
+  --btn-outline-active: #E4ECF7;
+
+  --btn-ghost-bg: transparent;
+  --btn-ghost-fg: #344054;
+  --btn-ghost-hover: #F0F4FA;
+  --btn-ghost-active: #E4EBF6;
+
+  --btn-destructive-bg: #DC2626;
+  --btn-destructive-fg: #FFFFFF;
+  --btn-destructive-hover: #B91C1C;
+  --btn-destructive-active: #991B1B;
+
+  --btn-disabled-bg: #F1F4F9;
+  --btn-disabled-fg: #98A2B3;
+  --btn-disabled-border: #E4EAF3;
+
+  --btn-focus-ring: rgba(36, 71, 168, 0.35);
+
+  /* ------------------------------------------------------------------------
+     6. Cards, Popovers & Surfaces (Light Mode)
+     ------------------------------------------------------------------------ */
+  --card: #FFFFFF;
+  --card-foreground: #101828;
+  --card-title: #0B1537;
+  --card-description: #667085;
+  --card-border: #E4EAF3;
+  --card-border-hover: #C8D5E8;
+
+  --popover: #FFFFFF;
+  --popover-foreground: #101828;
+  --popover-border: #E4EAF3;
+
+  --dropdown-bg: #FFFFFF;
+  --dropdown-fg: #101828;
+  --dropdown-border: #E4EAF3;
+  --dropdown-hover: #F4F7FC;
+
+  --dialog-bg: #FFFFFF;
+  --dialog-fg: #101828;
+  --dialog-border: #E4EAF3;
+
+  --tooltip-bg: #0B1537;
+  --tooltip-fg: #FFFFFF;
+  --tooltip-border: #14265C;
+
+  --surface-selected: #EAF0FF;
+  --surface-selected-fg: #14265C;
+  --surface-selected-border: #98B5FA;
+  --surface-hover: #F4F7FC;
+
+  /* ------------------------------------------------------------------------
+     7. Forms & Inputs (Light Mode)
+     ------------------------------------------------------------------------ */
+  --input: #FFFFFF;
+  --input-bg: #FFFFFF;
+  --input-foreground: #101828;
+  --input-placeholder: #98A2B3;
+  --input-border: #D8E1ED;
+  --input-border-hover: #A9BDDC;
+  --input-border-focus: #2447A8;
+  --input-ring: rgba(36, 71, 168, 0.20);
+
+  --input-disabled-bg: #F4F7FA;
+  --input-disabled-border: #E4EAF3;
+  --input-disabled-fg: #98A2B3;
+
+  --textarea-bg: #FFFFFF;
+  --textarea-border: #D8E1ED;
+
+  --select-bg: #FFFFFF;
+  --select-fg: #101828;
+  --select-border: #D8E1ED;
+
+  --checkbox-bg: #FFFFFF;
+  --checkbox-border: #CBD5E1;
+  --checkbox-checked-bg: #2447A8;
+  --checkbox-checked-fg: #FFFFFF;
+
+  --radio-bg: #FFFFFF;
+  --radio-border: #CBD5E1;
+  --radio-checked-bg: #2447A8;
+  --radio-dot: #FFFFFF;
+
+  --switch-track: #D0DBEA;
+  --switch-track-active: #2447A8;
+  --switch-thumb: #FFFFFF;
+  --switch-thumb-active: #FFFFFF;
+
+  --label-fg: #1E293B;
+  --helper-fg: #667085;
+  --form-error-fg: #D92D20;
+  --form-error-border: #FDA29B;
+  --form-error-bg: #FEF3F2;
+
+  /* ------------------------------------------------------------------------
+     8. Navigation (Light Mode)
+     ------------------------------------------------------------------------ */
+  --sidebar: #FFFFFF;
+  --sidebar-background: #FFFFFF;
+  --sidebar-foreground: #344054;
+  --sidebar-muted: #667085;
+  --sidebar-heading: #0B1537;
+  --sidebar-hover-bg: #F0F4FA;
+  --sidebar-hover-fg: #14265C;
+  --sidebar-active-bg: #EAF0FF;
+  --sidebar-active-fg: #14265C;
+  --sidebar-active-text: #14265C;
+  --sidebar-border: #E4EAF3;
+  --sidebar-primary: #14265C;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F0F4FA;
+  --sidebar-accent-foreground: #14265C;
+  --sidebar-ring: #2447A8;
+
+  --topbar-bg: rgba(255, 255, 255, 0.88);
+  --topbar-fg: #101828;
+  --topbar-border: #E4EAF3;
+
+  --nav-link-fg: #344054;
+  --nav-link-hover-fg: #14265C;
+  --nav-link-hover-bg: #F0F4FA;
+  --nav-active-indicator: #2447A8;
+
+  --breadcrumb-fg: #667085;
+  --breadcrumb-active: #101828;
+  --breadcrumb-separator: #98A2B3;
+
+  --mobile-nav-bg: #FFFFFF;
+  --mobile-nav-fg: #101828;
+  --mobile-nav-border: #E4EAF3;
+
+  /* ------------------------------------------------------------------------
+     9. Data Visualization & Charts (Light Mode)
+     ------------------------------------------------------------------------ */
+  --chart-1: #2447A8; /* Royal Blue */
+  --chart-2: #4778F5; /* Accent Sky Blue */
+  --chart-3: #0E9384; /* Teal Emerald */
+  --chart-4: #5E5CE6; /* Indigo Violet */
+  --chart-5: #E11D48; /* Coral Rose */
+
+  --chart-grid: #E8EEF6;
+  --chart-axis: #667085;
+  --chart-tooltip-bg: #0B1537;
+  --chart-tooltip-fg: #FFFFFF;
+  --chart-tooltip-border: #1D2D5B;
+
+  --trend-positive: #027A48;
+  --trend-positive-bg: #ECFDF3;
+  --trend-negative: #B42318;
+  --trend-negative-bg: #FEF3F2;
+
+  --progress-track: #E9EFF8;
+  --progress-fill: #2447A8;
+  --progress-fill-gradient: linear-gradient(90deg, #14265C 0%, #4778F5 100%);
+
+  /* ------------------------------------------------------------------------
+     10. Status & Feedback (Light Mode)
+     ------------------------------------------------------------------------ */
+  /* Success */
+  --status-success-fg: #027A48;
+  --status-success-bg: #ECFDF3;
+  --status-success-border: #A6F4C5;
+  --status-success-icon: #12B76A;
+
+  /* Warning */
+  --status-warning-fg: #B54708;
+  --status-warning-bg: #FFFAEB;
+  --status-warning-border: #FEDF89;
+  --status-warning-icon: #F79009;
+
+  /* Error & Destructive */
+  --status-error-fg: #B42318;
+  --status-error-bg: #FEF3F2;
+  --status-error-border: #FECDCA;
+  --status-error-icon: #F04438;
+
+  /* Information */
+  --status-info-fg: #175CD3;
+  --status-info-bg: #EFF8FF;
+  --status-info-border: #B2DDFF;
+  --status-info-icon: #2E90FA;
+
+  /* Pending */
+  --status-pending-fg: #5925DC;
+  --status-pending-bg: #F4F3FF;
+  --status-pending-border: #D9D6FE;
+  --status-pending-icon: #7A5AF8;
+
+  /* Neutral */
+  --status-neutral-fg: #344054;
+  --status-neutral-bg: #F8F9FC;
+  --status-neutral-border: #EAECF0;
+  --status-neutral-icon: #667085;
+
+  /* ------------------------------------------------------------------------
+     11. Borders, Shadows & Effects (Light Mode)
+     ------------------------------------------------------------------------ */
+  --border: #E4EAF3;
+  --border-strong: #CAD6E7;
+  --divider-subtle: #EDF2F8;
+  --ring: #2447A8;
+
+  --shadow-tint: rgba(11, 21, 55, 0.06);
+  --shadow-subtle: 0 1px 3px rgba(11, 21, 55, 0.05);
+  --shadow-card: 0 4px 20px -2px rgba(11, 21, 55, 0.06);
+  --shadow-elevated: 0 12px 32px -4px rgba(11, 21, 55, 0.1);
+  --shadow-glow: 0 0 24px -2px rgba(36, 71, 168, 0.25);
+
+  --selection-bg: rgba(36, 71, 168, 0.15);
+  --selection-fg: #0B1537;
+
+  --scrollbar-track: #F6F8FC;
+  --scrollbar-thumb: #CCD6E4;
+  --scrollbar-thumb-hover: #9EAFC6;
+
+  /* ------------------------------------------------------------------------
+     12. shadcn/ui Core Tokens (Light Mode)
+     ------------------------------------------------------------------------ */
+  --primary: #14265C;
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #EEF2F8;
+  --secondary-foreground: #14265C;
+
+  --muted: #F1F4F9;
+
+  --accent: #EAF0FF;
+  --accent-foreground: #14265C;
+
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+
+  --radius: 0.625rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ==========================================================================
+   Dark Mode Theme Specifications
+   Target: Deep Navy Surfaces, Elevated Contrast, Controlled Luminescence
+   ========================================================================== */
 
+.dark,
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not(.light) {
+    /* ------------------------------------------------------------------------
+       2. Page & Layout Surfaces (Dark Mode)
+       ------------------------------------------------------------------------ */
+    --background: #080F22;
+    --page-background: #080F22;
+    --content-background: #0D162C;
+    --secondary-background: #0F1A34;
+    --subtle-background: #101C38;
+    --elevated-surface: #101A32;
+    --inverted-background: #F3F6FC;
+    --overlay: rgba(3, 7, 18, 0.75);
+    --backdrop: rgba(3, 7, 18, 0.60);
+
+    /* ------------------------------------------------------------------------
+       3. Typography & Text Roles (Dark Mode)
+       ------------------------------------------------------------------------ */
+    --foreground: #F3F6FC;
+    --heading-foreground: #FFFFFF;
+    --title-foreground: #F8FAFC;
+    --subtitle-foreground: #CBD5E1;
+    --paragraph-foreground: #D1DBEE;
+    --secondary-foreground: #A8B4CC;
+    --secondary-text: #A8B4CC;
+    --muted-foreground: #A8B4CC;
+    --placeholder-foreground: #5E718D;
+    --disabled-foreground: #48566E;
+    --link-foreground: #5E8EF7;
+    --link-hover-foreground: #82A7FF;
+    --inverted-foreground: #0B1537;
+    --primary-foreground: #FFFFFF;
+    --gradient-foreground: #FFFFFF;
+
+    /* ------------------------------------------------------------------------
+       4. Brand & Ambient Gradients (Dark Mode)
+       ------------------------------------------------------------------------ */
+    --gradient-brand: linear-gradient(135deg, #101E42 0%, #1A3478 50%, #2A56C6 100%);
+    --gradient-primary-btn: linear-gradient(135deg, #2447A8 0%, #4778F5 100%);
+    --gradient-primary-btn-hover: linear-gradient(135deg, #2D54C2 0%, #5B8BF7 100%);
+    --gradient-sidebar: linear-gradient(180deg, #091124 0%, #060B18 100%);
+    --gradient-sidebar-brand: linear-gradient(180deg, #0A1329 0%, #060D1E 100%);
+    --gradient-active-nav: linear-gradient(135deg, rgba(71, 120, 245, 0.22) 0%, rgba(36, 71, 168, 0.12) 100%);
+    --gradient-card: linear-gradient(180deg, #13203E 0%, #101B34 100%);
+    --gradient-hero: radial-gradient(ellipse at 50% 0%, rgba(71, 120, 245, 0.16) 0%, rgba(8, 15, 34, 0) 70%), linear-gradient(180deg, #0C1630 0%, #080F22 100%);
+    --gradient-ambient: radial-gradient(circle at 10% 20%, rgba(71, 120, 245, 0.12) 0%, transparent 45%), radial-gradient(circle at 90% 80%, rgba(36, 71, 168, 0.10) 0%, transparent 45%);
+    --gradient-highlight: linear-gradient(135deg, rgba(130, 167, 255, 0.30) 0%, rgba(71, 120, 245, 0.12) 100%);
+    --gradient-glow: radial-gradient(circle, rgba(71, 120, 245, 0.28) 0%, transparent 70%);
+
+    /* ------------------------------------------------------------------------
+       5. Buttons (Dark Mode)
+       ------------------------------------------------------------------------ */
+    --btn-primary-bg: #3B6FD8;
+    --btn-primary-fg: #FFFFFF;
+    --btn-primary-hover: #4778F5;
+    --btn-primary-active: #2956BE;
+
+    --btn-gradient-bg: var(--gradient-primary-btn);
+    --btn-gradient-fg: #FFFFFF;
+    --btn-gradient-hover: var(--gradient-primary-btn-hover);
+    --btn-gradient-active: linear-gradient(135deg, #1D3A8A 0%, #3B6FD8 100%);
+
+    --btn-secondary-bg: #172442;
+    --btn-secondary-fg: #EAF0FF;
+    --btn-secondary-hover: #1E2F56;
+    --btn-secondary-active: #131E37;
+
+    --btn-outline-bg: transparent;
+    --btn-outline-fg: #EAF0FF;
+    --btn-outline-border: #2A3A5A;
+    --btn-outline-hover: #152240;
+    --btn-outline-active: #1A2A4E;
+
+    --btn-ghost-bg: transparent;
+    --btn-ghost-fg: #D1DBEE;
+    --btn-ghost-hover: #14213D;
+    --btn-ghost-active: #1A2B4E;
+
+    --btn-destructive-bg: #DC2626;
+    --btn-destructive-fg: #FFFFFF;
+    --btn-destructive-hover: #EF4444;
+    --btn-destructive-active: #B91C1C;
+
+    --btn-disabled-bg: #101A30;
+    --btn-disabled-fg: #536480;
+    --btn-disabled-border: #1B2740;
+
+    --btn-focus-ring: rgba(71, 120, 245, 0.45);
+
+    /* ------------------------------------------------------------------------
+       6. Cards, Popovers & Surfaces (Dark Mode)
+       ------------------------------------------------------------------------ */
+    --card: #111D38;
+    --card-foreground: #F3F6FC;
+    --card-title: #FFFFFF;
+    --card-description: #A8B4CC;
+    --card-border: #202E4B;
+    --card-border-hover: #2F436D;
+
+    --popover: #101A32;
+    --popover-foreground: #F3F6FC;
+    --popover-border: #263550;
+
+    --dropdown-bg: #101A32;
+    --dropdown-fg: #F3F6FC;
+    --dropdown-border: #263550;
+    --dropdown-hover: #172545;
+
+    --dialog-bg: #101A32;
+    --dialog-fg: #F3F6FC;
+    --dialog-border: #263550;
+
+    --tooltip-bg: #1B2A50;
+    --tooltip-fg: #FFFFFF;
+    --tooltip-border: #2A3F70;
+
+    --surface-selected: #15274E;
+    --surface-selected-fg: #EAF0FF;
+    --surface-selected-border: #335ED8;
+    --surface-hover: #152240;
+
+    /* ------------------------------------------------------------------------
+       7. Forms & Inputs (Dark Mode)
+       ------------------------------------------------------------------------ */
+    --input: #0D162B;
+    --input-bg: #0D162B;
+    --input-foreground: #F3F6FC;
+    --input-placeholder: #5E718D;
+    --input-border: #24334F;
+    --input-border-hover: #374E77;
+    --input-border-focus: #4778F5;
+    --input-ring: rgba(71, 120, 245, 0.25);
+
+    --input-disabled-bg: #0B1222;
+    --input-disabled-border: #1B273F;
+    --input-disabled-fg: #536480;
+
+    --textarea-bg: #0D162B;
+    --textarea-border: #24334F;
+
+    --select-bg: #0D162B;
+    --select-fg: #F3F6FC;
+    --select-border: #24334F;
+
+    --checkbox-bg: #0E172E;
+    --checkbox-border: #2F4163;
+    --checkbox-checked-bg: #4778F5;
+    --checkbox-checked-fg: #FFFFFF;
+
+    --radio-bg: #0E172E;
+    --radio-border: #2F4163;
+    --radio-checked-bg: #4778F5;
+    --radio-dot: #FFFFFF;
+
+    --switch-track: #24334F;
+    --switch-track-active: #4778F5;
+    --switch-thumb: #F3F6FC;
+    --switch-thumb-active: #FFFFFF;
+
+    --label-fg: #E2E8F0;
+    --helper-fg: #A8B4CC;
+    --form-error-fg: #F87171;
+    --form-error-border: #991B1B;
+    --form-error-bg: #2B1214;
+
+    /* ------------------------------------------------------------------------
+       8. Navigation (Dark Mode)
+       ------------------------------------------------------------------------ */
+    --sidebar: #0A1329;
+    --sidebar-background: #0A1329;
+    --sidebar-foreground: #D1DBEE;
+    --sidebar-muted: #7D8FA9;
+    --sidebar-heading: #9DB0D0;
+    --sidebar-hover-bg: #121E3B;
+    --sidebar-hover-fg: #FFFFFF;
+    --sidebar-active-bg: #172B56;
+    --sidebar-active-fg: #8AB2FF;
+    --sidebar-active-text: #8AB2FF;
+    --sidebar-border: #1B2742;
+    --sidebar-primary: #4778F5;
+    --sidebar-primary-foreground: #FFFFFF;
+    --sidebar-accent: #172B56;
+    --sidebar-accent-foreground: #8AB2FF;
+    --sidebar-ring: #4778F5;
+
+    --topbar-bg: rgba(10, 19, 41, 0.88);
+    --topbar-fg: #F3F6FC;
+    --topbar-border: #1B2742;
+
+    --nav-link-fg: #D1DBEE;
+    --nav-link-hover-fg: #FFFFFF;
+    --nav-link-hover-bg: #121E3B;
+    --nav-active-indicator: #4778F5;
+
+    --breadcrumb-fg: #7D8FA9;
+    --breadcrumb-active: #F3F6FC;
+    --breadcrumb-separator: #48566E;
+
+    --mobile-nav-bg: #0A1329;
+    --mobile-nav-fg: #F3F6FC;
+    --mobile-nav-border: #1B2742;
+
+    /* ------------------------------------------------------------------------
+       9. Data Visualization & Charts (Dark Mode)
+       ------------------------------------------------------------------------ */
+    --chart-1: #4778F5; /* Vibrant Blue */
+    --chart-2: #60A5FA; /* Sky Blue */
+    --chart-3: #14B8A6; /* Emerald Teal */
+    --chart-4: #818CF8; /* Electric Indigo */
+    --chart-5: #F43F5E; /* Vibrant Rose */
+
+    --chart-grid: #1C2945;
+    --chart-axis: #8E9EB8;
+    --chart-tooltip-bg: #132040;
+    --chart-tooltip-fg: #FFFFFF;
+    --chart-tooltip-border: #2D4373;
+
+    --trend-positive: #34D399;
+    --trend-positive-bg: #062E1F;
+    --trend-negative: #F87171;
+    --trend-negative-bg: #2D1214;
+
+    --progress-track: #172340;
+    --progress-fill: #4778F5;
+    --progress-fill-gradient: linear-gradient(90deg, #2447A8 0%, #60A5FA 100%);
+
+    /* ------------------------------------------------------------------------
+       10. Status & Feedback (Dark Mode)
+       ------------------------------------------------------------------------ */
+    /* Success */
+    --status-success-fg: #6CE9A6;
+    --status-success-bg: #05281A;
+    --status-success-border: #084C32;
+    --status-success-icon: #32D583;
+
+    /* Warning */
+    --status-warning-fg: #FEC84B;
+    --status-warning-bg: #2B1E05;
+    --status-warning-border: #5C3E08;
+    --status-warning-icon: #FDB022;
+
+    /* Error & Destructive */
+    --status-error-fg: #FDA29B;
+    --status-error-bg: #2E0F12;
+    --status-error-border: #5C1D24;
+    --status-error-icon: #F97066;
+
+    /* Information */
+    --status-info-fg: #84CAFF;
+    --status-info-bg: #0C2340;
+    --status-info-border: #15477B;
+    --status-info-icon: #53B1FD;
+
+    /* Pending */
+    --status-pending-fg: #BDB4FE;
+    --status-pending-bg: #1C1642;
+    --status-pending-border: #3B2F7E;
+    --status-pending-icon: #9B8AFB;
+
+    /* Neutral */
+    --status-neutral-fg: #98A2B3;
+    --status-neutral-bg: #111A2E;
+    --status-neutral-border: #22304C;
+    --status-neutral-icon: #667085;
+
+    /* ------------------------------------------------------------------------
+       11. Borders, Shadows & Effects (Dark Mode)
+       ------------------------------------------------------------------------ */
+    --border: #263550;
+    --border-strong: #34466B;
+    --divider-subtle: #1B2742;
+    --ring: #4778F5;
+
+    --shadow-tint: rgba(0, 0, 0, 0.5);
+    --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.35);
+    --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+    --shadow-elevated: 0 12px 32px -4px rgba(0, 0, 0, 0.65);
+    --shadow-glow: 0 0 28px -2px rgba(71, 120, 245, 0.35);
+
+    --selection-bg: rgba(71, 120, 245, 0.30);
+    --selection-fg: #FFFFFF;
+
+    --scrollbar-track: #080F22;
+    --scrollbar-thumb: #1F2E4C;
+    --scrollbar-thumb-hover: #314670;
+
+    /* ------------------------------------------------------------------------
+       12. shadcn/ui Core Tokens (Dark Mode)
+       ------------------------------------------------------------------------ */
+    --primary: #4778F5;
+    --primary-foreground: #FFFFFF;
+
+    --secondary: #172442;
+    --secondary-foreground: #EAF0FF;
+
+    --muted: #15203D;
+
+    --accent: #1B2A52;
+    --accent-foreground: #EAF0FF;
+
+    --destructive: #EF4444;
+    --destructive-foreground: #FFFFFF;
   }
 }
 
+/* Fallback for explicit .dark class without media query */
+.dark {
+  --background: #080F22;
+  --page-background: #080F22;
+  --content-background: #0D162C;
+  --secondary-background: #0F1A34;
+  --subtle-background: #101C38;
+  --elevated-surface: #101A32;
+  --inverted-background: #F3F6FC;
+  --overlay: rgba(3, 7, 18, 0.75);
+  --backdrop: rgba(3, 7, 18, 0.60);
+
+  --foreground: #F3F6FC;
+  --heading-foreground: #FFFFFF;
+  --title-foreground: #F8FAFC;
+  --subtitle-foreground: #CBD5E1;
+  --paragraph-foreground: #D1DBEE;
+  --secondary-foreground: #A8B4CC;
+  --secondary-text: #A8B4CC;
+  --muted-foreground: #A8B4CC;
+  --placeholder-foreground: #5E718D;
+  --disabled-foreground: #48566E;
+  --link-foreground: #5E8EF7;
+  --link-hover-foreground: #82A7FF;
+  --inverted-foreground: #0B1537;
+  --primary-foreground: #FFFFFF;
+  --gradient-foreground: #FFFFFF;
+
+  --gradient-brand: linear-gradient(135deg, #101E42 0%, #1A3478 50%, #2A56C6 100%);
+  --gradient-primary-btn: linear-gradient(135deg, #2447A8 0%, #4778F5 100%);
+  --gradient-primary-btn-hover: linear-gradient(135deg, #2D54C2 0%, #5B8BF7 100%);
+  --gradient-sidebar: linear-gradient(180deg, #091124 0%, #060B18 100%);
+  --gradient-sidebar-brand: linear-gradient(180deg, #0A1329 0%, #060D1E 100%);
+  --gradient-active-nav: linear-gradient(135deg, rgba(71, 120, 245, 0.22) 0%, rgba(36, 71, 168, 0.12) 100%);
+  --gradient-card: linear-gradient(180deg, #13203E 0%, #101B34 100%);
+  --gradient-hero: radial-gradient(ellipse at 50% 0%, rgba(71, 120, 245, 0.16) 0%, rgba(8, 15, 34, 0) 70%), linear-gradient(180deg, #0C1630 0%, #080F22 100%);
+  --gradient-ambient: radial-gradient(circle at 10% 20%, rgba(71, 120, 245, 0.12) 0%, transparent 45%), radial-gradient(circle at 90% 80%, rgba(36, 71, 168, 0.10) 0%, transparent 45%);
+  --gradient-highlight: linear-gradient(135deg, rgba(130, 167, 255, 0.30) 0%, rgba(71, 120, 245, 0.12) 100%);
+  --gradient-glow: radial-gradient(circle, rgba(71, 120, 245, 0.28) 0%, transparent 70%);
+
+  --btn-primary-bg: #3B6FD8;
+  --btn-primary-fg: #FFFFFF;
+  --btn-primary-hover: #4778F5;
+  --btn-primary-active: #2956BE;
+
+  --btn-gradient-bg: var(--gradient-primary-btn);
+  --btn-gradient-fg: #FFFFFF;
+  --btn-gradient-hover: var(--gradient-primary-btn-hover);
+  --btn-gradient-active: linear-gradient(135deg, #1D3A8A 0%, #3B6FD8 100%);
+
+  --btn-secondary-bg: #172442;
+  --btn-secondary-fg: #EAF0FF;
+  --btn-secondary-hover: #1E2F56;
+  --btn-secondary-active: #131E37;
+
+  --btn-outline-bg: transparent;
+  --btn-outline-fg: #EAF0FF;
+  --btn-outline-border: #2A3A5A;
+  --btn-outline-hover: #152240;
+  --btn-outline-active: #1A2A4E;
+
+  --btn-ghost-bg: transparent;
+  --btn-ghost-fg: #D1DBEE;
+  --btn-ghost-hover: #14213D;
+  --btn-ghost-active: #1A2B4E;
+
+  --btn-destructive-bg: #DC2626;
+  --btn-destructive-fg: #FFFFFF;
+  --btn-destructive-hover: #EF4444;
+  --btn-destructive-active: #B91C1C;
+
+  --btn-disabled-bg: #101A30;
+  --btn-disabled-fg: #536480;
+  --btn-disabled-border: #1B2740;
+
+  --btn-focus-ring: rgba(71, 120, 245, 0.45);
+
+  --card: #111D38;
+  --card-foreground: #F3F6FC;
+  --card-title: #FFFFFF;
+  --card-description: #A8B4CC;
+  --card-border: #202E4B;
+  --card-border-hover: #2F436D;
+
+  --popover: #101A32;
+  --popover-foreground: #F3F6FC;
+  --popover-border: #263550;
+
+  --dropdown-bg: #101A32;
+  --dropdown-fg: #F3F6FC;
+  --dropdown-border: #263550;
+  --dropdown-hover: #172545;
+
+  --dialog-bg: #101A32;
+  --dialog-fg: #F3F6FC;
+  --dialog-border: #263550;
+
+  --tooltip-bg: #1B2A50;
+  --tooltip-fg: #FFFFFF;
+  --tooltip-border: #2A3F70;
+
+  --surface-selected: #15274E;
+  --surface-selected-fg: #EAF0FF;
+  --surface-selected-border: #335ED8;
+  --surface-hover: #152240;
+
+  --input: #0D162B;
+  --input-bg: #0D162B;
+  --input-foreground: #F3F6FC;
+  --input-placeholder: #5E718D;
+  --input-border: #24334F;
+  --input-border-hover: #374E77;
+  --input-border-focus: #4778F5;
+  --input-ring: rgba(71, 120, 245, 0.25);
+
+  --input-disabled-bg: #0B1222;
+  --input-disabled-border: #1B273F;
+  --input-disabled-fg: #536480;
+
+  --textarea-bg: #0D162B;
+  --textarea-border: #24334F;
+
+  --select-bg: #0D162B;
+  --select-fg: #F3F6FC;
+  --select-border: #24334F;
+
+  --checkbox-bg: #0E172E;
+  --checkbox-border: #2F4163;
+  --checkbox-checked-bg: #4778F5;
+  --checkbox-checked-fg: #FFFFFF;
+
+  --radio-bg: #0E172E;
+  --radio-border: #2F4163;
+  --radio-checked-bg: #4778F5;
+  --radio-dot: #FFFFFF;
+
+  --switch-track: #24334F;
+  --switch-track-active: #4778F5;
+  --switch-thumb: #F3F6FC;
+  --switch-thumb-active: #FFFFFF;
+
+  --label-fg: #E2E8F0;
+  --helper-fg: #A8B4CC;
+  --form-error-fg: #F87171;
+  --form-error-border: #991B1B;
+  --form-error-bg: #2B1214;
+
+  --sidebar: #0A1329;
+  --sidebar-background: #0A1329;
+  --sidebar-foreground: #D1DBEE;
+  --sidebar-muted: #7D8FA9;
+  --sidebar-heading: #9DB0D0;
+  --sidebar-hover-bg: #121E3B;
+  --sidebar-hover-fg: #FFFFFF;
+  --sidebar-active-bg: #172B56;
+  --sidebar-active-fg: #8AB2FF;
+  --sidebar-active-text: #8AB2FF;
+  --sidebar-border: #1B2742;
+  --sidebar-primary: #4778F5;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #172B56;
+  --sidebar-accent-foreground: #8AB2FF;
+  --sidebar-ring: #4778F5;
+
+  --topbar-bg: rgba(10, 19, 41, 0.88);
+  --topbar-fg: #F3F6FC;
+  --topbar-border: #1B2742;
+
+  --nav-link-fg: #D1DBEE;
+  --nav-link-hover-fg: #FFFFFF;
+  --nav-link-hover-bg: #121E3B;
+  --nav-active-indicator: #4778F5;
+
+  --breadcrumb-fg: #7D8FA9;
+  --breadcrumb-active: #F3F6FC;
+  --breadcrumb-separator: #48566E;
+
+  --mobile-nav-bg: #0A1329;
+  --mobile-nav-fg: #F3F6FC;
+  --mobile-nav-border: #1B2742;
+
+  --chart-1: #4778F5;
+  --chart-2: #60A5FA;
+  --chart-3: #14B8A6;
+  --chart-4: #818CF8;
+  --chart-5: #F43F5E;
+
+  --chart-grid: #1C2945;
+  --chart-axis: #8E9EB8;
+  --chart-tooltip-bg: #132040;
+  --chart-tooltip-fg: #FFFFFF;
+  --chart-tooltip-border: #2D4373;
+
+  --trend-positive: #34D399;
+  --trend-positive-bg: #062E1F;
+  --trend-negative: #F87171;
+  --trend-negative-bg: #2D1214;
+
+  --progress-track: #172340;
+  --progress-fill: #4778F5;
+  --progress-fill-gradient: linear-gradient(90deg, #2447A8 0%, #60A5FA 100%);
+
+  --status-success-fg: #6CE9A6;
+  --status-success-bg: #05281A;
+  --status-success-border: #084C32;
+  --status-success-icon: #32D583;
+
+  --status-warning-fg: #FEC84B;
+  --status-warning-bg: #2B1E05;
+  --status-warning-border: #5C3E08;
+  --status-warning-icon: #FDB022;
+
+  --status-error-fg: #FDA29B;
+  --status-error-bg: #2E0F12;
+  --status-error-border: #5C1D24;
+  --status-error-icon: #F97066;
+
+  --status-info-fg: #84CAFF;
+  --status-info-bg: #0C2340;
+  --status-info-border: #15477B;
+  --status-info-icon: #53B1FD;
+
+  --status-pending-fg: #BDB4FE;
+  --status-pending-bg: #1C1642;
+  --status-pending-border: #3B2F7E;
+  --status-pending-icon: #9B8AFB;
+
+  --status-neutral-fg: #98A2B3;
+  --status-neutral-bg: #111A2E;
+  --status-neutral-border: #22304C;
+  --status-neutral-icon: #667085;
+
+  --border: #263550;
+  --border-strong: #34466B;
+  --divider-subtle: #1B2742;
+  --ring: #4778F5;
+
+  --shadow-tint: rgba(0, 0, 0, 0.5);
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+  --shadow-elevated: 0 12px 32px -4px rgba(0, 0, 0, 0.65);
+  --shadow-glow: 0 0 28px -2px rgba(71, 120, 245, 0.35);
+
+  --selection-bg: rgba(71, 120, 245, 0.30);
+  --selection-fg: #FFFFFF;
+
+  --scrollbar-track: #080F22;
+  --scrollbar-thumb: #1F2E4C;
+  --scrollbar-thumb-hover: #314670;
+
+  --primary: #4778F5;
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #172442;
+  --secondary-foreground: #EAF0FF;
+
+  --muted: #15203D;
+
+  --accent: #1B2A52;
+  --accent-foreground: #EAF0FF;
+
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+}
+
+/* ==========================================================================
+   Tailwind CSS v4 @theme inline Integration
+   Maps design tokens directly to Tailwind utility classes
+   ========================================================================== */
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* shadcn/ui and Standard Semantic Theme Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  /* Charts */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Brand Foundation Utilities */
+  --color-brand-deep-navy: var(--brand-deep-navy);
+  --color-brand-primary-navy: var(--brand-primary-navy);
+  --color-brand-royal-blue: var(--brand-royal-blue);
+  --color-brand-accent-blue: var(--brand-accent-blue);
+  --color-brand-light-blue: var(--brand-light-blue);
+
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+  --color-brand-950: var(--brand-950);
+
+  /* Extended Semantic Surface Utilities */
+  --color-page-bg: var(--page-background);
+  --color-content-bg: var(--content-background);
+  --color-secondary-bg: var(--secondary-background);
+  --color-subtle-bg: var(--subtle-background);
+  --color-elevated-surface: var(--elevated-surface);
+  --color-inverted-bg: var(--inverted-background);
+  --color-surface-selected: var(--surface-selected);
+  --color-surface-hover: var(--surface-hover);
+
+  /* Extended Typography Utilities */
+  --color-heading: var(--heading-foreground);
+  --color-title: var(--title-foreground);
+  --color-subtitle: var(--subtitle-foreground);
+  --color-paragraph: var(--paragraph-foreground);
+  --color-secondary-text: var(--secondary-text);
+  --color-placeholder: var(--placeholder-foreground);
+  --color-disabled: var(--disabled-foreground);
+  --color-link: var(--link-foreground);
+  --color-link-hover: var(--link-hover-foreground);
+  --color-inverted: var(--inverted-foreground);
+
+  /* Extended Borders */
+  --color-border-strong: var(--border-strong);
+  --color-divider-subtle: var(--divider-subtle);
+
+  /* Extended Status */
+  --color-status-success: var(--status-success-fg);
+  --color-status-success-bg: var(--status-success-bg);
+  --color-status-success-border: var(--status-success-border);
+  --color-status-success-icon: var(--status-success-icon);
+
+  --color-status-warning: var(--status-warning-fg);
+  --color-status-warning-bg: var(--status-warning-bg);
+  --color-status-warning-border: var(--status-warning-border);
+  --color-status-warning-icon: var(--status-warning-icon);
+
+  --color-status-error: var(--status-error-fg);
+  --color-status-error-bg: var(--status-error-bg);
+  --color-status-error-border: var(--status-error-border);
+  --color-status-error-icon: var(--status-error-icon);
+
+  --color-status-info: var(--status-info-fg);
+  --color-status-info-bg: var(--status-info-bg);
+  --color-status-info-border: var(--status-info-border);
+  --color-status-info-icon: var(--status-info-icon);
+
+  --color-status-pending: var(--status-pending-fg);
+  --color-status-pending-bg: var(--status-pending-bg);
+  --color-status-pending-border: var(--status-pending-border);
+  --color-status-pending-icon: var(--status-pending-icon);
+
+  --color-status-neutral: var(--status-neutral-fg);
+  --color-status-neutral-bg: var(--status-neutral-bg);
+  --color-status-neutral-border: var(--status-neutral-border);
+  --color-status-neutral-icon: var(--status-neutral-icon);
+
+  /* Navigation Extended */
+  --color-topbar-bg: var(--topbar-bg);
+  --color-topbar-fg: var(--topbar-fg);
+  --color-topbar-border: var(--topbar-border);
+
+  /* Shadows */
+  --shadow-subtle: var(--shadow-subtle);
+  --shadow-card: var(--shadow-card);
+  --shadow-elevated: var(--shadow-elevated);
+  --shadow-glow: var(--shadow-glow);
+}
+
+/* ==========================================================================
+   Reusable Gradient & Surface Utility Classes
+   ========================================================================== */
+
+.bg-gradient-brand {
+  background-image: var(--gradient-brand);
+}
+
+.bg-gradient-primary-btn {
+  background-image: var(--gradient-primary-btn);
+}
+
+.bg-gradient-primary-btn:hover {
+  background-image: var(--gradient-primary-btn-hover);
+}
+
+.bg-gradient-sidebar {
+  background-image: var(--gradient-sidebar);
+}
+
+.bg-gradient-sidebar-brand {
+  background-image: var(--gradient-sidebar-brand);
+}
+
+.bg-gradient-active-nav {
+  background-image: var(--gradient-active-nav);
+}
+
+.bg-gradient-card {
+  background-image: var(--gradient-card);
+}
+
+.bg-gradient-hero {
+  background-image: var(--gradient-hero);
+}
+
+.bg-gradient-ambient {
+  background-image: var(--gradient-ambient);
+}
+
+.bg-gradient-highlight {
+  background-image: var(--gradient-highlight);
+}
+
+.bg-gradient-glow {
+  background-image: var(--gradient-glow);
+}
+
+/* ==========================================================================
+   Section 5: Global Baseline Styling Rules
+   Respects semantic typography, text selection, focus outlines, and scrollbars
+   ========================================================================== */
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  color-scheme: light dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings: strong contrast, distinct hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-foreground);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Paragraphs: comfortable, highly readable */
+p {
+  color: var(--paragraph-foreground);
+  line-height: 1.625;
+}
+
+/* Links: semantic brand royal blue with refined hover */
+a {
+  color: var(--link-foreground);
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+}
+
+a:hover {
+  color: var(--link-hover-foreground);
+}
+
+/* Form Controls Baseline */
+input, textarea, select {
+  color: var(--input-foreground);
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--placeholder-foreground);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--input-border-focus);
+  box-shadow: 0 0 0 3px var(--input-ring);
+}
+
+/* Focus Visible outlines for accessible keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Text Selection */
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-fg);
+}
+
+/* Custom Scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 9999px;
+  border: 2px solid var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
 }
