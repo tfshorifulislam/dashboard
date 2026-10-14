@@ -1,0 +1,232 @@
+"use client"
+
+import * as React from "react"
+import {
+  Plus,
+  Search,
+  CheckCircle2,
+  Clock,
+  AlertTriangle,
+  Download,
+  Send,
+  MoreVertical,
+} from "lucide-react"
+import { DashboardShell } from "@/components/dashboard/dashboard-shell"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent } from "@/components/ui/card"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { useDashboard } from "@/context/dashboard-context"
+
+export default function InvoicesPage() {
+  const { invoices, markInvoicePaid, setIsCreateInvoiceOpen } = useDashboard()
+  const [searchQuery, setSearchQuery] = React.useState("")
+  const [statusFilter, setStatusFilter] = React.useState<string>("all")
+
+  const filteredInvoices = invoices.filter((inv) => {
+    const cli = inv.clientName || inv.client || ""
+    const proj = inv.projectName || "Contract Work"
+    const matchesSearch =
+      inv.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      cli.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      proj.toLowerCase().includes(searchQuery.toLowerCase())
+    const matchesStatus = statusFilter === "all" || inv.status === statusFilter
+    return matchesSearch && matchesStatus
+  })
+
+  const paidTotal = invoices
+    .filter((inv) => inv.status === "paid")
+    .reduce((acc, inv) => acc + inv.amount, 0)
+
+  const pendingTotal = invoices
+    .filter((inv) => inv.status === "pending")
+    .reduce((acc, inv) => acc + inv.amount, 0)
+
+  const overdueTotal = invoices
+    .filter((inv) => inv.status === "overdue")
+    .reduce((acc, inv) => acc + inv.amount, 0)
+
+  const totalBilled = paidTotal + pendingTotal + overdueTotal
+
+  const formatCurrency = (val: number) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0,
+    }).format(val)
+
+  return (
+    <DashboardShell>
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-2">
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900">Invoices & Billing</h1>
+            <Badge variant="secondary" className="bg-emerald-50 text-emerald-700 font-semibold">
+              {invoices.length} Invoices
+            </Badge>
+          </div>
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            Generate milestone invoices, monitor client payments, and track agency cash flow.
+          </p>
+        </div>
+
+        <Button
+          onClick={() => setIsCreateInvoiceOpen(true)}
+          className="bg-gradient-to-r from-[#14265C] to-[#2447A8] hover:from-[#0E1B42] hover:to-[#1B3580] text-white shadow-md shadow-blue-950/20 text-xs sm:text-sm h-10 px-4 rounded-xl"
+        >
+          <Plus className="h-4 w-4 mr-1.5" />
+          <span>Create Invoice</span>
+        </Button>
+      </div>
+
+      {/* Financial Breakdown KPI Cards */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+        <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs">
+          <p className="text-xs font-medium text-slate-500">Total Billed</p>
+          <p className="text-xl sm:text-2xl font-bold text-slate-900 mt-1">{formatCurrency(totalBilled)}</p>
+        </div>
+        <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs">
+          <p className="text-xs font-medium text-slate-500">Collected Revenue</p>
+          <p className="text-xl sm:text-2xl font-bold text-emerald-600 mt-1">{formatCurrency(paidTotal)}</p>
+        </div>
+        <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs">
+          <p className="text-xs font-medium text-slate-500">Pending Receivables</p>
+          <p className="text-xl sm:text-2xl font-bold text-amber-600 mt-1">{formatCurrency(pendingTotal)}</p>
+        </div>
+        <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs">
+          <p className="text-xs font-medium text-slate-500">Overdue Invoices</p>
+          <p className="text-xl sm:text-2xl font-bold text-rose-600 mt-1">{formatCurrency(overdueTotal)}</p>
+        </div>
+      </div>
+
+      {/* Search and Filters */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
+        <div className="relative w-full max-w-md">
+          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+          <Input
+            placeholder="Search by invoice #, client, or project..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-9 h-9 text-xs bg-slate-50/50 border-slate-200"
+          />
+        </div>
+
+        <div className="flex items-center rounded-lg bg-slate-100 p-1 text-xs">
+          {["all", "paid", "pending", "overdue"].map((status) => (
+            <button
+              key={status}
+              onClick={() => setStatusFilter(status)}
+              className={`px-3 py-1 rounded-md capitalize font-medium transition-all ${
+                statusFilter === status
+                  ? "bg-white text-slate-900 shadow-2xs font-semibold"
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              {status}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Invoices Table */}
+      <Card className="border border-slate-200 bg-white rounded-xl shadow-2xs overflow-hidden">
+        <CardContent className="p-0">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr className="border-b border-slate-100 bg-slate-50/70 text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+                  <th className="py-3 px-4 sm:px-6">Invoice #</th>
+                  <th className="py-3 px-4">Client</th>
+                  <th className="py-3 px-4">Project</th>
+                  <th className="py-3 px-4">Issue Date</th>
+                  <th className="py-3 px-4">Due Date</th>
+                  <th className="py-3 px-4 text-right">Amount</th>
+                  <th className="py-3 px-4">Status</th>
+                  <th className="py-3 px-4 text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {filteredInvoices.map((inv) => (
+                  <tr key={inv.id} className="hover:bg-slate-50/70 transition-colors">
+                    <td className="py-3.5 px-4 sm:px-6 font-bold text-slate-900">
+                      {inv.id}
+                    </td>
+                    <td className="py-3.5 px-4 font-medium text-slate-800">
+                      {inv.clientName || inv.client}
+                    </td>
+                    <td className="py-3.5 px-4 text-slate-600">
+                      {inv.projectName || "Contract Work"}
+                    </td>
+                    <td className="py-3.5 px-4 text-slate-500">
+                      {inv.issueDate}
+                    </td>
+                    <td className="py-3.5 px-4 text-slate-600 font-medium">
+                      {inv.dueDate}
+                    </td>
+                    <td className="py-3.5 px-4 text-right font-bold text-slate-900 text-sm">
+                      {formatCurrency(inv.amount)}
+                    </td>
+                    <td className="py-3.5 px-4">
+                      {inv.status === "paid" ? (
+                        <Badge variant="outline" className="bg-emerald-50 text-emerald-700 border-emerald-200 text-xs">
+                          <CheckCircle2 className="h-3 w-3 mr-1" />
+                          Paid
+                        </Badge>
+                      ) : inv.status === "pending" ? (
+                        <Badge variant="outline" className="bg-amber-50 text-amber-700 border-amber-200 text-xs">
+                          <Clock className="h-3 w-3 mr-1" />
+                          Pending
+                        </Badge>
+                      ) : (
+                        <Badge variant="outline" className="bg-rose-50 text-rose-700 border-rose-200 text-xs">
+                          <AlertTriangle className="h-3 w-3 mr-1" />
+                          Overdue
+                        </Badge>
+                      )}
+                    </td>
+                    <td className="py-3.5 px-4 text-center">
+                      <div className="flex items-center justify-center gap-1.5">
+                        {inv.status !== "paid" && (
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            onClick={() => markInvoicePaid(inv.id)}
+                            className="h-7 px-2 text-xs text-blue-600 hover:text-blue-800 hover:bg-blue-50"
+                          >
+                            Mark Paid
+                          </Button>
+                        )}
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" size="icon" className="h-7 w-7 text-slate-500">
+                              <MoreVertical className="h-3.5 w-3.5" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end" className="text-xs">
+                            <DropdownMenuItem className="cursor-pointer">
+                              <Download className="h-3.5 w-3.5 mr-2" /> Download PDF
+                            </DropdownMenuItem>
+                            <DropdownMenuItem className="cursor-pointer">
+                              <Send className="h-3.5 w-3.5 mr-2" /> Send Reminder
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </CardContent>
+      </Card>
+    </DashboardShell>
+  )
+}
