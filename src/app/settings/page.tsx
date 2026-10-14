@@ -29,9 +29,23 @@ export default function SettingsPage() {
   const [customDomain, setCustomDomain] = React.useState("portal.acmecreative.agency")
   const [currency, setCurrency] = React.useState("USD ($)")
 
-  const handleSave = (e: React.FormEvent) => {
+  const handleSave = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSaved(true)
+    try {
+      await fetch("/api/settings", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: workspaceName,
+          agencyEmail,
+          customDomain,
+          currency,
+        }),
+      })
+    } catch (err) {
+      console.warn("Failed to save settings to API:", err)
+    }
     setTimeout(() => setIsSaved(false), 3000)
   }
 

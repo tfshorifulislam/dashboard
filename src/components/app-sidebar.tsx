@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import {
   LayoutDashboard,
   FolderKanban,
@@ -46,18 +46,21 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { useDashboard } from "@/context/dashboard-context"
-
-const WORKSPACES = [
-  { id: "ws-1", name: "Acme Creative Agency", plan: "Agency Pro Tier" },
-  { id: "ws-2", name: "Freelance Design Lab", plan: "Solo Creator Tier" },
-  { id: "ws-3", name: "Starlight Digital", plan: "Agency Pro Tier" },
-]
+import { signOut } from "@/lib/auth-client"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname()
-  const { projects, clients, approvals, setIsCreateProjectOpen } = useDashboard()
+  const router = useRouter()
+  const {
+    projects,
+    clients,
+    approvals,
+    setIsCreateProjectOpen,
+    workspaces,
+    activeWorkspace,
+    setActiveWorkspace,
+  } = useDashboard()
   const { isMobile } = useSidebar()
-  const [activeWorkspace, setActiveWorkspace] = React.useState(WORKSPACES[0])
 
   const pendingApprovalsCount = approvals.filter((a) => a.status === "pending").length
 
@@ -165,7 +168,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <DropdownMenuLabel className="px-2 py-1.5 text-xs font-semibold text-muted-foreground">
                   Switch Workspace
                 </DropdownMenuLabel>
-                {WORKSPACES.map((ws) => (
+                {workspaces.map((ws) => (
                   <DropdownMenuItem
                     key={ws.id}
                     onClick={() => setActiveWorkspace(ws)}
@@ -335,6 +338,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
+                  onClick={async () => {
+                    try {
+                      await signOut()
+                    } catch {
+                      // ignore
+                    }
+                    router.push("/login")
+                  }}
                   className="flex items-center gap-2 cursor-pointer text-red-600 focus:text-red-700 dark:text-red-400 text-xs"
                 >
                   <LogOut className="h-4 w-4" />
