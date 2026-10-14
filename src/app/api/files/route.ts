@@ -186,7 +186,8 @@ export async function POST(req: NextRequest) {
           userName,
           action: "uploaded file",
           target: filename,
-          project: projectName,
+          projectId,
+          projectName,
           category: "file",
         },
       })

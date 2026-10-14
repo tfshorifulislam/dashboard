@@ -172,7 +172,8 @@ export async function POST(req: NextRequest) {
           userName,
           action: "issued invoice",
           target: `${invoiceNumber} ($${calculatedSubtotal.toLocaleString()})`,
-          project: projectName,
+          projectId: projectId ?? null,
+          projectName: projectName ?? null,
           category: "invoice",
         },
       })

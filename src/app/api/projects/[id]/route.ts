@@ -92,7 +92,8 @@ export async function PATCH(
         userName,
         action: "updated project",
         target: updated.name,
-        project: updated.name,
+        projectId: updated.id,
+        projectName: updated.name,
         category: "project",
       },
     })

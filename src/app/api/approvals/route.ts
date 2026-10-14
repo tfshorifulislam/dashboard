@@ -123,7 +123,8 @@ export async function POST(req: NextRequest) {
         userName,
         action: "submitted deliverable for sign-off",
         target: `${approval.title} (${approval.version})`,
-        project: project.name,
+        projectId: project.id,
+        projectName: project.name,
         category: "approval",
       },
     })

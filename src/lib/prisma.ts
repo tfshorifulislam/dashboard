@@ -8,12 +8,8 @@ declare global {
 }
 
 function getPrismaInstance(): PrismaClient {
-  const connectionString = process.env.DATABASE_URL
-
-  if (!connectionString) {
-    // Fallback instance when DATABASE_URL is not set (e.g. during build or static analysis)
-    return new PrismaClient()
-  }
+  const connectionString =
+    process.env.DATABASE_URL || "postgresql://placeholder:placeholder@localhost:5432/placeholder"
 
   // Reuse pg.Pool across hot-reloads in development
   const pool = globalThis.__pgPool ?? new pg.Pool({ connectionString })

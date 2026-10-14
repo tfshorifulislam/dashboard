@@ -160,7 +160,8 @@ export async function POST(req: NextRequest) {
         userName,
         action: "created project",
         target: project.name,
-        project: project.name,
+        projectId: project.id,
+        projectName: project.name,
         category: "project",
       },
     })

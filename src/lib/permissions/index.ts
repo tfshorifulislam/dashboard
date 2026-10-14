@@ -134,7 +134,11 @@ export async function authenticateWorkspace(
         role: member.role,
       },
     }
-  } catch (error) {
+  } catch (error: unknown) {
+    const err = error as { digest?: string; name?: string }
+    if (err?.digest === "HANGING_PROMISE_REJECTION" || err?.name === "DynamicServerError") {
+      throw error
+    }
     console.error("[AUTH_ERROR]", error)
     return {
       success: false,

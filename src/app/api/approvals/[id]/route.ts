@@ -91,7 +91,8 @@ export async function PATCH(
           userName,
           action: actionText,
           target: `${approval.title} (${approval.version})`,
-          project: approval.project.name,
+          projectId: approval.projectId,
+          projectName: approval.project.name,
           category: "approval",
         },
       })
