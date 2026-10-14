@@ -98,12 +98,12 @@ export function NotificationsPopover() {
         <Button
           variant="ghost"
           size="icon"
-          className="relative h-9 w-9 rounded-lg hover:bg-slate-100 text-slate-600"
+          className="relative h-9 w-9 rounded-lg hover:bg-accent text-foreground/80 hover:text-foreground"
           aria-label="View notifications"
         >
           <Bell className="h-4 w-4" />
           {unreadCount > 0 && (
-            <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-[10px] font-bold text-white shadow-sm ring-2 ring-white">
+            <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-[10px] font-bold text-white shadow-sm ring-2 ring-background">
               {unreadCount}
             </span>
           )}
@@ -111,18 +111,18 @@ export function NotificationsPopover() {
       </PopoverTrigger>
       <PopoverContent
         align="end"
-        className="w-80 md:w-96 p-0 shadow-xl border-slate-200 rounded-xl"
+        className="w-80 md:w-96 p-0 shadow-xl border-border bg-popover text-popover-foreground rounded-xl"
         sideOffset={8}
       >
-        <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3 bg-slate-50/70 rounded-t-xl">
+        <div className="flex items-center justify-between border-b border-border px-4 py-3 bg-muted/50 rounded-t-xl">
           <div className="flex items-center gap-2">
-            <h4 className="text-sm font-semibold text-slate-900">Notifications</h4>
+            <h4 className="text-sm font-semibold text-foreground">Notifications</h4>
             {unreadCount > 0 ? (
-              <Badge variant="secondary" className="bg-blue-50 text-blue-700 text-xs px-2 py-0.5">
+              <Badge variant="secondary" className="bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300 text-xs px-2 py-0.5">
                 {unreadCount} new
               </Badge>
             ) : (
-              <Badge variant="outline" className="text-slate-500 text-xs px-2 py-0.5">
+              <Badge variant="outline" className="text-muted-foreground text-xs px-2 py-0.5">
                 All read
               </Badge>
             )}
@@ -130,7 +130,7 @@ export function NotificationsPopover() {
           {unreadCount > 0 && (
             <button
               onClick={markAllAsRead}
-              className="text-xs font-medium text-blue-600 hover:text-blue-800 transition-colors flex items-center gap-1"
+              className="text-xs font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1"
             >
               <Check className="h-3 w-3" />
               Mark all read
@@ -138,28 +138,28 @@ export function NotificationsPopover() {
           )}
         </div>
 
-        <div className="max-h-80 overflow-y-auto divide-y divide-slate-100">
+        <div className="max-h-80 overflow-y-auto divide-y divide-border">
           {notifications.map((item) => (
             <div
               key={item.id}
               onClick={() => markAsRead(item.id)}
-              className={`p-3.5 transition-colors cursor-pointer hover:bg-slate-50 flex items-start gap-3 ${
-                !item.read ? "bg-blue-50/40" : ""
+              className={`p-3.5 transition-colors cursor-pointer hover:bg-accent/60 flex items-start gap-3 ${
+                !item.read ? "bg-blue-50/40 dark:bg-blue-950/30" : ""
               }`}
             >
-              <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-white border border-slate-200 shadow-2xs">
+              <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-card border border-border shadow-2xs">
                 {getIcon(item.type)}
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-1">
-                  <p className="text-xs font-semibold text-slate-800 truncate">
+                  <p className="text-xs font-semibold text-foreground truncate">
                     {item.title}
                   </p>
-                  <span className="text-[11px] text-slate-400 whitespace-nowrap">
+                  <span className="text-[11px] text-muted-foreground whitespace-nowrap">
                     {item.time}
                   </span>
                 </div>
-                <p className="text-xs text-slate-600 line-clamp-2 mt-0.5">
+                <p className="text-xs text-muted-foreground line-clamp-2 mt-0.5">
                   {item.description}
                 </p>
               </div>
@@ -170,11 +170,11 @@ export function NotificationsPopover() {
           ))}
         </div>
 
-        <div className="p-2 border-t border-slate-100 bg-slate-50/50 rounded-b-xl text-center">
+        <div className="p-2 border-t border-border bg-muted/30 rounded-b-xl text-center">
           <Link
             href="/activity"
             onClick={() => setOpen(false)}
-            className="inline-flex items-center justify-center gap-1.5 text-xs font-medium text-slate-600 hover:text-blue-700 py-1"
+            className="inline-flex items-center justify-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary py-1"
           >
             <span>View workspace activity log</span>
             <ArrowRight className="h-3 w-3" />

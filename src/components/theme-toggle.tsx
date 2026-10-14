@@ -11,13 +11,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+const emptySubscribe = () => () => {}
+
 export function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
-
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
+  const mounted = React.useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  )
 
   if (!mounted) {
     return (
@@ -76,7 +78,7 @@ export function ThemeToggle() {
             theme === "system" ? "text-primary font-bold bg-accent" : ""
           }`}
         >
-          <Laptop className="h-4 w-4 text-slate-500" />
+          <Laptop className="h-4 w-4 text-muted-foreground" />
           <span>System</span>
         </DropdownMenuItem>
       </DropdownMenuContent>

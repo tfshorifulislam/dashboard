@@ -30,25 +30,25 @@ export function ProjectsOverview() {
     switch (status) {
       case "in-progress":
         return (
-          <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 font-medium">
+          <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-300 dark:border-blue-900/60 font-medium">
             In Progress
           </Badge>
         )
       case "review":
         return (
-          <Badge variant="outline" className="bg-amber-50 text-amber-700 border-amber-200 font-medium">
+          <Badge variant="outline" className="bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-900/60 font-medium">
             In Review
           </Badge>
         )
       case "completed":
         return (
-          <Badge variant="outline" className="bg-emerald-50 text-emerald-700 border-emerald-200 font-medium">
+          <Badge variant="outline" className="bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-900/60 font-medium">
             Completed
           </Badge>
         )
       case "planning":
         return (
-          <Badge variant="outline" className="bg-slate-100 text-slate-700 border-slate-200 font-medium">
+          <Badge variant="outline" className="bg-muted text-muted-foreground border-border font-medium">
             Planning
           </Badge>
         )
@@ -61,25 +61,25 @@ export function ProjectsOverview() {
   const recentProjects = projects.slice(0, 4)
 
   return (
-    <Card className="border border-slate-200/90 bg-white rounded-xl shadow-xs overflow-hidden">
-      <CardHeader className="flex flex-row items-center justify-between pb-3 border-b border-slate-100">
+    <Card className="border border-border bg-card text-card-foreground rounded-xl shadow-xs overflow-hidden">
+      <CardHeader className="flex flex-row items-center justify-between pb-3 border-b border-border">
         <div>
           <div className="flex items-center gap-2">
-            <div className="p-1.5 rounded-lg bg-blue-50 text-blue-600">
+            <div className="p-1.5 rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-400">
               <FolderKanban className="h-4 w-4" />
             </div>
-            <CardTitle className="text-base sm:text-lg font-bold text-slate-900">
+            <CardTitle className="text-base sm:text-lg font-bold text-foreground">
               Active Client Projects
             </CardTitle>
           </div>
-          <CardDescription className="text-xs text-slate-500 mt-1">
+          <CardDescription className="text-xs text-muted-foreground mt-1">
             Tracking milestones, deliverables, and progress across client workspaces
           </CardDescription>
         </div>
 
         <Link
           href="/projects"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary/80 transition-colors"
         >
           <span>View All ({projects.length})</span>
           <ArrowRight className="h-3.5 w-3.5" />
@@ -90,7 +90,7 @@ export function ProjectsOverview() {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-slate-100 bg-slate-50/60 text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+              <tr className="border-b border-border bg-muted/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                 <th className="py-3 px-4 sm:px-6">Project Name</th>
                 <th className="py-3 px-4">Client</th>
                 <th className="py-3 px-4">Status</th>
@@ -100,19 +100,19 @@ export function ProjectsOverview() {
                 <th className="py-3 px-4 text-center">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-xs">
+            <tbody className="divide-y divide-border text-xs">
               {recentProjects.map((project) => (
                 <tr
                   key={project.id}
-                  className="hover:bg-blue-50/30 transition-colors group"
+                  className="hover:bg-accent/40 transition-colors group"
                 >
                   <td className="py-3.5 px-4 sm:px-6">
                     <div className="flex flex-col">
-                      <span className="font-semibold text-slate-900 group-hover:text-blue-700 transition-colors">
+                      <span className="font-semibold text-foreground group-hover:text-primary transition-colors">
                         {project.name}
                       </span>
-                      <span className="text-[11px] text-slate-500 flex items-center gap-1 mt-0.5">
-                        <Layers className="h-3 w-3 text-slate-400" />
+                      <span className="text-[11px] text-muted-foreground flex items-center gap-1 mt-0.5">
+                        <Layers className="h-3 w-3 text-muted-foreground" />
                         {project.category} • {project.deliverablesCount} deliverables
                       </span>
                     </div>
@@ -121,11 +121,11 @@ export function ProjectsOverview() {
                   <td className="py-3.5 px-4 whitespace-nowrap">
                     <div className="flex items-center gap-2">
                       <Avatar className="h-6 w-6">
-                        <AvatarFallback className="text-[10px] bg-blue-100 text-blue-700 font-semibold">
+                        <AvatarFallback className="text-[10px] bg-blue-100 text-blue-700 dark:bg-blue-950/70 dark:text-blue-300 font-semibold">
                           {(project.clientName || project.client).slice(0, 2).toUpperCase()}
                         </AvatarFallback>
                       </Avatar>
-                      <span className="text-slate-700 font-medium">{project.clientName || project.client}</span>
+                      <span className="text-foreground font-medium">{project.clientName || project.client}</span>
                     </div>
                   </td>
 
@@ -136,34 +136,34 @@ export function ProjectsOverview() {
                   <td className="py-3.5 px-4 whitespace-nowrap min-w-[140px]">
                     <div className="flex items-center gap-2.5">
                       <Progress value={project.progress} className="h-2 flex-1" />
-                      <span className="text-[11px] font-semibold text-slate-700 min-w-[28px]">
+                      <span className="text-[11px] font-semibold text-foreground min-w-[28px]">
                         {project.progress}%
                       </span>
                     </div>
                   </td>
 
-                  <td className="py-3.5 px-4 whitespace-nowrap text-slate-600">
-                    <div className="flex items-center gap-1.5 text-slate-600">
-                      <Calendar className="h-3.5 w-3.5 text-slate-400" />
+                  <td className="py-3.5 px-4 whitespace-nowrap text-muted-foreground">
+                    <div className="flex items-center gap-1.5 text-muted-foreground">
+                      <Calendar className="h-3.5 w-3.5 text-muted-foreground" />
                       <span>{project.dueDate}</span>
                     </div>
                   </td>
 
-                  <td className="py-3.5 px-4 whitespace-nowrap text-right font-semibold text-slate-900">
+                  <td className="py-3.5 px-4 whitespace-nowrap text-right font-semibold text-foreground">
                     {project.budget}
                   </td>
 
                   <td className="py-3.5 px-4 whitespace-nowrap text-center">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon" className="h-7 w-7 text-slate-500 hover:text-slate-800">
+                        <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground hover:text-foreground">
                           <MoreVertical className="h-3.5 w-3.5" />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end" className="text-xs">
                         <DropdownMenuItem asChild>
                           <Link href="/projects" className="flex items-center gap-2 cursor-pointer">
-                            <ExternalLink className="h-3.5 w-3.5 text-slate-500" />
+                            <ExternalLink className="h-3.5 w-3.5 text-muted-foreground" />
                             <span>View Details</span>
                           </Link>
                         </DropdownMenuItem>

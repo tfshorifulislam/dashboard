@@ -82,12 +82,12 @@ export default function FilesPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-bold tracking-tight text-slate-900">Files & Assets</h1>
-            <Badge variant="secondary" className="bg-blue-50 text-blue-700 font-semibold">
+            <h1 className="text-2xl font-bold tracking-tight text-foreground">Files & Assets</h1>
+            <Badge variant="secondary" className="bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-900/60 font-semibold">
               {files.length} Assets
             </Badge>
           </div>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1">
             Secure client file repository, deliverables library, contracts, and export bundles.
           </p>
         </div>
@@ -104,61 +104,61 @@ export default function FilesPage() {
 
       {/* Storage and Metrics Summary */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex items-center justify-between">
+        <div className="p-4 rounded-xl bg-card border border-border shadow-2xs flex items-center justify-between">
           <div>
-            <p className="text-xs font-medium text-slate-500">Storage Used</p>
-            <p className="text-xl sm:text-2xl font-bold text-slate-900 mt-1">4.2 GB / 50 GB</p>
-            <p className="text-[11px] text-blue-600 font-medium mt-0.5">8.4% capacity</p>
+            <p className="text-xs font-medium text-muted-foreground">Storage Used</p>
+            <p className="text-xl sm:text-2xl font-bold text-foreground mt-1">4.2 GB / 50 GB</p>
+            <p className="text-[11px] text-blue-600 dark:text-blue-400 font-medium mt-0.5">8.4% capacity</p>
           </div>
-          <div className="p-3 rounded-xl bg-blue-50 text-blue-600">
+          <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
             <HardDrive className="h-5 w-5" />
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex items-center justify-between">
+        <div className="p-4 rounded-xl bg-card border border-border shadow-2xs flex items-center justify-between">
           <div>
-            <p className="text-xs font-medium text-slate-500">Deliverable Files</p>
-            <p className="text-xl sm:text-2xl font-bold text-slate-900 mt-1">{files.length}</p>
-            <p className="text-[11px] text-emerald-600 font-medium mt-0.5">All synced with clients</p>
+            <p className="text-xs font-medium text-muted-foreground">Deliverable Files</p>
+            <p className="text-xl sm:text-2xl font-bold text-foreground mt-1">{files.length}</p>
+            <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium mt-0.5">All synced with clients</p>
           </div>
-          <div className="p-3 rounded-xl bg-emerald-50 text-emerald-600">
+          <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400">
             <FolderArchive className="h-5 w-5" />
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex items-center justify-between">
+        <div className="p-4 rounded-xl bg-card border border-border shadow-2xs flex items-center justify-between">
           <div>
-            <p className="text-xs font-medium text-slate-500">Shared Links</p>
-            <p className="text-xl sm:text-2xl font-bold text-slate-900 mt-1">100% Secure</p>
-            <p className="text-[11px] text-slate-500 font-medium mt-0.5">Encrypted at rest & in transit</p>
+            <p className="text-xs font-medium text-muted-foreground">Shared Links</p>
+            <p className="text-xl sm:text-2xl font-bold text-foreground mt-1">100% Secure</p>
+            <p className="text-[11px] text-muted-foreground font-medium mt-0.5">Encrypted at rest & in transit</p>
           </div>
-          <div className="p-3 rounded-xl bg-indigo-50 text-indigo-600">
+          <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
             <Share2 className="h-5 w-5" />
           </div>
         </div>
       </div>
 
       {/* Search and Filters */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-card p-3 rounded-xl border border-border shadow-2xs">
         <div className="relative w-full max-w-md">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+          <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Search by file name, project, or client..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-9 h-9 text-xs bg-slate-50/50 border-slate-200"
+            className="pl-9 h-9 text-xs bg-muted/40 border-input text-foreground placeholder:text-muted-foreground"
           />
         </div>
 
-        <div className="flex items-center rounded-lg bg-slate-100 p-1 text-xs">
+        <div className="flex items-center rounded-lg bg-muted p-1 text-xs">
           {["all", "design", "document", "code", "archive"].map((cat) => (
             <button
               key={cat}
               onClick={() => setCategoryFilter(cat)}
               className={`px-3 py-1 rounded-md capitalize font-medium transition-all ${
                 categoryFilter === cat
-                  ? "bg-white text-slate-900 shadow-2xs font-semibold"
-                  : "text-slate-600 hover:text-slate-900"
+                  ? "bg-card text-foreground shadow-2xs font-semibold"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               {cat}
@@ -172,25 +172,25 @@ export default function FilesPage() {
         {filteredFiles.map((file) => (
           <Card
             key={file.id}
-            className="border border-slate-200 bg-white hover:border-blue-200 hover:shadow-md transition-all rounded-xl overflow-hidden group"
+            className="border border-border bg-card hover:border-border/80 hover:shadow-md transition-all rounded-xl overflow-hidden group"
           >
             <CardContent className="p-4 space-y-3">
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-start gap-3 min-w-0">
-                  <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 group-hover:bg-blue-50/50 transition-colors shrink-0">
+                  <div className="p-2.5 rounded-xl bg-muted/50 border border-border group-hover:bg-primary/10 transition-colors shrink-0">
                     {getFileIcon(file.category || file.type)}
                   </div>
                   <div className="min-w-0">
-                    <h3 className="text-xs font-bold text-slate-900 truncate group-hover:text-blue-700 transition-colors">
+                    <h3 className="text-xs font-bold text-foreground truncate group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {file.name}
                     </h3>
-                    <p className="text-[11px] text-slate-500 mt-0.5">{file.size}</p>
+                    <p className="text-[11px] text-muted-foreground mt-0.5">{file.size}</p>
                   </div>
                 </div>
 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="icon" className="h-7 w-7 text-slate-500">
+                    <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground hover:text-foreground">
                       <MoreVertical className="h-3.5 w-3.5" />
                     </Button>
                   </DropdownMenuTrigger>
@@ -205,23 +205,23 @@ export default function FilesPage() {
                 </DropdownMenu>
               </div>
 
-              <div className="pt-2 border-t border-slate-100 space-y-1 text-xs">
-                <div className="flex items-center justify-between text-slate-600">
-                  <span className="flex items-center gap-1 text-[11px] text-slate-500">
-                    <FolderKanban className="h-3 w-3 text-slate-400" />
+              <div className="pt-2 border-t border-border space-y-1 text-xs">
+                <div className="flex items-center justify-between text-muted-foreground">
+                  <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                    <FolderKanban className="h-3 w-3 text-muted-foreground" />
                     Project:
                   </span>
-                  <span className="font-medium text-slate-800 text-[11px] truncate max-w-[140px]">
+                  <span className="font-medium text-foreground text-[11px] truncate max-w-[140px]">
                     {file.projectName || file.project}
                   </span>
                 </div>
-                <div className="flex items-center justify-between text-slate-500 text-[11px]">
+                <div className="flex items-center justify-between text-muted-foreground text-[11px]">
                   <span>Client:</span>
-                  <span className="font-semibold text-slate-700">{file.clientName || file.uploader}</span>
+                  <span className="font-semibold text-foreground">{file.clientName || file.uploader}</span>
                 </div>
-                <div className="flex items-center justify-between text-slate-400 text-[10px] pt-1">
+                <div className="flex items-center justify-between text-muted-foreground/80 text-[10px] pt-1">
                   <span>Uploaded {file.uploadedAt}</span>
-                  <Badge variant="outline" className="text-[10px] bg-slate-50 text-slate-600 border-slate-200">
+                  <Badge variant="outline" className="text-[10px] bg-muted text-muted-foreground border-border">
                     {file.category || file.type || "file"}
                   </Badge>
                 </div>

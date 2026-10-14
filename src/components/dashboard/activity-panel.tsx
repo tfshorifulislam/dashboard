@@ -38,25 +38,25 @@ export function ActivityPanel() {
   const recentActivities = activities.slice(0, 5)
 
   return (
-    <Card className="border border-slate-200/90 bg-white rounded-xl shadow-xs overflow-hidden">
-      <CardHeader className="flex flex-row items-center justify-between pb-3 border-b border-slate-100">
+    <Card className="border border-border bg-card text-card-foreground rounded-xl shadow-xs overflow-hidden">
+      <CardHeader className="flex flex-row items-center justify-between pb-3 border-b border-border">
         <div>
           <div className="flex items-center gap-2">
-            <div className="p-1.5 rounded-lg bg-blue-50 text-blue-600">
+            <div className="p-1.5 rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-400">
               <Activity className="h-4 w-4" />
             </div>
-            <CardTitle className="text-base font-bold text-slate-900">
+            <CardTitle className="text-base font-bold text-foreground">
               Workspace Activity
             </CardTitle>
           </div>
-          <CardDescription className="text-xs text-slate-500 mt-1">
+          <CardDescription className="text-xs text-muted-foreground mt-1">
             Real-time feed of client interactions and project updates
           </CardDescription>
         </div>
 
         <Link
           href="/activity"
-          className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+          className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-primary/80 transition-colors"
         >
           <span>Full Log</span>
           <ArrowRight className="h-3 w-3" />
@@ -67,21 +67,21 @@ export function ActivityPanel() {
         {recentActivities.map((item) => (
           <div
             key={item.id}
-            className="flex items-start gap-3 text-xs hover:bg-slate-50 p-2 rounded-lg transition-colors"
+            className="flex items-start gap-3 text-xs hover:bg-accent/40 p-2 rounded-lg transition-colors"
           >
             <Avatar className="h-7 w-7 mt-0.5">
-              <AvatarFallback className="text-[10px] bg-slate-100 text-slate-700 font-semibold">
+              <AvatarFallback className="text-[10px] bg-muted text-muted-foreground font-semibold">
                 {(item.userName || item.user || "TM").slice(0, 2).toUpperCase()}
               </AvatarFallback>
             </Avatar>
 
             <div className="flex-1 min-w-0">
-              <p className="text-slate-800">
-                <span className="font-semibold text-slate-900">{item.userName || item.user}</span>{" "}
-                <span className="text-slate-600">{item.action}</span>{" "}
-                <strong className="text-slate-800 font-medium">{item.target}</strong>
+              <p className="text-foreground">
+                <span className="font-semibold text-foreground">{item.userName || item.user}</span>{" "}
+                <span className="text-muted-foreground">{item.action}</span>{" "}
+                <strong className="text-foreground font-medium">{item.target}</strong>
               </p>
-              <div className="flex items-center gap-2 mt-0.5 text-[11px] text-slate-400">
+              <div className="flex items-center gap-2 mt-0.5 text-[11px] text-muted-foreground">
                 <span className="flex items-center gap-1">
                   {getIcon(item.type || item.category)}
                   <span>{item.time || item.timestamp}</span>

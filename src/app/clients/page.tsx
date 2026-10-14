@@ -66,12 +66,12 @@ export default function ClientsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-bold tracking-tight text-slate-900">Clients</h1>
-            <Badge variant="secondary" className="bg-indigo-50 text-indigo-700 font-semibold">
+            <h1 className="text-2xl font-bold tracking-tight text-foreground">Clients</h1>
+            <Badge variant="secondary" className="bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 font-semibold">
               {clients.length} Accounts
             </Badge>
           </div>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1">
             Manage client relationships, portal access, project assignments, and total billings.
           </p>
         </div>
@@ -87,47 +87,47 @@ export default function ClientsPage() {
 
       {/* KPI Stats Strip */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-        <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs">
-          <p className="text-xs font-medium text-slate-500">Active Retainers</p>
-          <p className="text-xl sm:text-2xl font-bold text-slate-900 mt-1">{activeCount}</p>
+        <div className="p-4 rounded-xl bg-card border border-border shadow-2xs">
+          <p className="text-xs font-medium text-muted-foreground">Active Retainers</p>
+          <p className="text-xl sm:text-2xl font-bold text-foreground mt-1">{activeCount}</p>
         </div>
-        <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs">
-          <p className="text-xs font-medium text-slate-500">Total Client Spend</p>
-          <p className="text-xl sm:text-2xl font-bold text-emerald-600 mt-1">{formatCurrency(totalRevenue)}</p>
+        <div className="p-4 rounded-xl bg-card border border-border shadow-2xs">
+          <p className="text-xs font-medium text-muted-foreground">Total Client Spend</p>
+          <p className="text-xl sm:text-2xl font-bold text-emerald-600 dark:text-emerald-400 mt-1">{formatCurrency(totalRevenue)}</p>
         </div>
-        <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs">
-          <p className="text-xs font-medium text-slate-500">Avg. Client Value</p>
-          <p className="text-xl sm:text-2xl font-bold text-slate-900 mt-1">
+        <div className="p-4 rounded-xl bg-card border border-border shadow-2xs">
+          <p className="text-xs font-medium text-muted-foreground">Avg. Client Value</p>
+          <p className="text-xl sm:text-2xl font-bold text-foreground mt-1">
             {formatCurrency(totalRevenue / (clients.length || 1))}
           </p>
         </div>
-        <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs">
-          <p className="text-xs font-medium text-slate-500">Portal Satisfaction</p>
-          <p className="text-xl sm:text-2xl font-bold text-blue-600 mt-1">99.2%</p>
+        <div className="p-4 rounded-xl bg-card border border-border shadow-2xs">
+          <p className="text-xs font-medium text-muted-foreground">Portal Satisfaction</p>
+          <p className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400 mt-1">99.2%</p>
         </div>
       </div>
 
       {/* Search and Filters */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-card p-3 rounded-xl border border-border shadow-2xs">
         <div className="relative w-full max-w-md">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+          <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Search by client name, contact, or email..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-9 h-9 text-xs bg-slate-50/50 border-slate-200"
+            className="pl-9 h-9 text-xs bg-muted/40 border-border"
           />
         </div>
 
-        <div className="flex items-center rounded-lg bg-slate-100 p-1 text-xs">
+        <div className="flex items-center rounded-lg bg-muted p-1 text-xs">
           {["all", "active", "lead"].map((status) => (
             <button
               key={status}
               onClick={() => setStatusFilter(status)}
               className={`px-3 py-1 rounded-md capitalize font-medium transition-all ${
                 statusFilter === status
-                  ? "bg-white text-slate-900 shadow-2xs font-semibold"
-                  : "text-slate-600 hover:text-slate-900"
+                  ? "bg-card text-foreground shadow-2xs font-semibold"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               {status}
@@ -141,20 +141,20 @@ export default function ClientsPage() {
         {filteredClients.map((client) => (
           <Card
             key={client.id}
-            className="border border-slate-200 bg-white hover:border-indigo-200 hover:shadow-md transition-all rounded-xl overflow-hidden flex flex-col justify-between"
+            className="border border-border bg-card text-card-foreground hover:border-primary/40 hover:shadow-md transition-all rounded-xl overflow-hidden flex flex-col justify-between"
           >
             <CardContent className="p-5 space-y-4">
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <Avatar className="h-10 w-10 border border-slate-200">
+                  <Avatar className="h-10 w-10 border border-border">
                     <AvatarFallback className="text-sm font-bold bg-gradient-to-tr from-[#14265C] to-[#2447A8] text-white">
                       {client.name.slice(0, 2).toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
                   <div>
-                    <h3 className="text-base font-bold text-slate-900">{client.name}</h3>
-                    <p className="text-xs text-slate-500 flex items-center gap-1">
-                      <Calendar className="h-3 w-3 text-slate-400" />
+                    <h3 className="text-base font-bold text-foreground">{client.name}</h3>
+                    <p className="text-xs text-muted-foreground flex items-center gap-1">
+                      <Calendar className="h-3 w-3 text-muted-foreground" />
                       Client since {client.joinedDate}
                     </p>
                   </div>
@@ -164,8 +164,8 @@ export default function ClientsPage() {
                   variant="outline"
                   className={
                     client.status.toLowerCase() === "active"
-                      ? "bg-emerald-50 text-emerald-700 border-emerald-200 text-xs"
-                      : "bg-amber-50 text-amber-700 border-amber-200 text-xs"
+                      ? "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-900/60 text-xs"
+                      : "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950/60 dark:text-amber-300 dark:border-amber-900/60 text-xs"
                   }
                 >
                   {client.status}
@@ -173,16 +173,16 @@ export default function ClientsPage() {
               </div>
 
               {/* Contact Information */}
-              <div className="p-3 rounded-lg bg-slate-50/70 border border-slate-100 text-xs space-y-1">
-                <p className="font-semibold text-slate-800">{client.contactName || client.name}</p>
-                <div className="flex items-center justify-between text-slate-500">
+              <div className="p-3 rounded-lg bg-muted/40 border border-border text-xs space-y-1">
+                <p className="font-semibold text-foreground">{client.contactName || client.name}</p>
+                <div className="flex items-center justify-between text-muted-foreground">
                   <span className="flex items-center gap-1 text-[11px] truncate">
-                    <Mail className="h-3 w-3 text-slate-400" />
+                    <Mail className="h-3 w-3 text-muted-foreground" />
                     {client.contactEmail || client.email}
                   </span>
                   <a
                     href={`mailto:${client.contactEmail || client.email}`}
-                    className="text-blue-600 hover:underline text-[11px] font-medium"
+                    className="text-primary hover:underline text-[11px] font-medium"
                   >
                     Email
                   </a>
@@ -190,32 +190,32 @@ export default function ClientsPage() {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-2 gap-2 pt-1 border-t border-slate-100 text-xs">
+              <div className="grid grid-cols-2 gap-2 pt-1 border-t border-border text-xs">
                 <div>
-                  <span className="text-[10px] text-slate-400 uppercase tracking-wider block">
+                  <span className="text-[10px] text-muted-foreground uppercase tracking-wider block">
                     Active Projects
                   </span>
-                  <span className="font-bold text-slate-900 text-sm flex items-center gap-1 mt-0.5">
-                    <FolderKanban className="h-3.5 w-3.5 text-blue-600" />
+                  <span className="font-bold text-foreground text-sm flex items-center gap-1 mt-0.5">
+                    <FolderKanban className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
                     {client.activeProjects} Ongoing
                   </span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 uppercase tracking-wider block">
+                  <span className="text-[10px] text-muted-foreground uppercase tracking-wider block">
                     Lifetime Spend
                   </span>
-                  <span className="font-bold text-slate-900 text-sm flex items-center gap-1 mt-0.5">
-                    <DollarSign className="h-3.5 w-3.5 text-emerald-600" />
+                  <span className="font-bold text-foreground text-sm flex items-center gap-1 mt-0.5">
+                    <DollarSign className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
                     {typeof client.totalSpent === "number" ? formatCurrency(client.totalSpent) : client.totalSpent}
                   </span>
                 </div>
               </div>
 
               {/* Actions Footer */}
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+              <div className="pt-3 border-t border-border flex items-center justify-between">
                 <Link
                   href="/projects"
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-primary/80 transition-colors"
                 >
                   <span>View Projects</span>
                   <ExternalLink className="h-3 w-3" />
@@ -223,14 +223,14 @@ export default function ClientsPage() {
 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-500">
+                    <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
                       <MoreVertical className="h-4 w-4" />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="text-xs">
                     <DropdownMenuItem className="cursor-pointer">Copy Portal Invite Link</DropdownMenuItem>
                     <DropdownMenuItem className="cursor-pointer">Create Client Invoice</DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer text-red-600">Archive Client</DropdownMenuItem>
+                    <DropdownMenuItem className="cursor-pointer text-red-600 dark:text-red-400">Archive Client</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
