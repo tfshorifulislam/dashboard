@@ -3,14 +3,14 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ==========================================================================
-   ClientSpace Global Color Design System
-   Architecture: Deep Navy Blue & Elegant Royal-Blue Gradients
-   Target: Premium, Trustworthy, Modern SaaS
+   ClientSpace Global Color & Gradient Design System
+   Core Visual Identity: Deep Navy (#0B1537) -> Dark Royal Blue (#14265C) -> Elegant Blue (#2447A8)
+   Target: Premium, Trustworthy, Modern SaaS Dashboard
    ========================================================================== */
 
 :root {
   /* ------------------------------------------------------------------------
-     1. Brand Palette Foundation (Canonical Navy & Royal Blue Scale)
+     1. Brand Foundation Palette (Canonical Navy & Royal Blue Scale)
      ------------------------------------------------------------------------ */
   --brand-deep-navy: #0B1537;
   --brand-primary-navy: #14265C;
@@ -32,7 +32,53 @@
   --brand-950: #080F22;
 
   /* ------------------------------------------------------------------------
-     2. Page & Layout Surfaces (Light Mode)
+     2. Signature Navy-to-Royal-Blue Gradients (Light Mode)
+     Progression: Deep Navy (#0B1537) -> Dark Royal Blue (#14265C) -> Elegant Blue (#2447A8)
+     ------------------------------------------------------------------------ */
+  --gradient-navy-brand: linear-gradient(135deg, #0B1537 0%, #14265C 50%, #2447A8 100%);
+  --gradient-brand: var(--gradient-navy-brand);
+
+  --gradient-navy-primary-btn: linear-gradient(135deg, #0B1537 0%, #14265C 45%, #2447A8 100%);
+  --gradient-navy-primary-btn-hover: linear-gradient(135deg, #070F28 0%, #0F1D46 45%, #1B3682 100%);
+  --gradient-navy-active-btn: linear-gradient(135deg, #050B1C 0%, #0A1433 45%, #142861 100%);
+  --gradient-primary-btn: var(--gradient-navy-primary-btn);
+  --gradient-primary-btn-hover: var(--gradient-navy-primary-btn-hover);
+
+  --gradient-navy-card: linear-gradient(180deg, #FFFFFF 0%, #F8FAFD 100%);
+  --gradient-navy-card-hover: linear-gradient(180deg, #FFFFFF 0%, #F1F5FD 100%);
+  --gradient-card: var(--gradient-navy-card);
+
+  /* Deep navy-to-dark-navy gradient for sidebar */
+  --gradient-sidebar-brand: linear-gradient(180deg, #0B1537 0%, #070E24 50%, #050B1C 100%);
+  --gradient-navy-sidebar: var(--gradient-sidebar-brand);
+  --gradient-sidebar: var(--gradient-sidebar-brand);
+
+  /* Active navigation item: refined royal-blue gradient */
+  --gradient-active-nav: linear-gradient(135deg, #14265C 0%, #2447A8 100%);
+  --gradient-navy-active-nav: var(--gradient-active-nav);
+
+  --gradient-navy-selected-surface: linear-gradient(135deg, #EAF0FF 0%, #F0F4FF 100%);
+  --gradient-selected-surface: var(--gradient-navy-selected-surface);
+
+  --gradient-navy-hero: radial-gradient(ellipse at 50% -10%, rgba(36, 71, 168, 0.12) 0%, rgba(246, 248, 252, 0) 70%), linear-gradient(180deg, #F0F4FC 0%, #F6F8FC 100%);
+  --gradient-hero: var(--gradient-navy-hero);
+
+  /* Dashboard content area: subtle navy-blue-tinted background gradient */
+  --gradient-navy-subtle-bg: linear-gradient(180deg, #F6F8FC 0%, #EFF4FC 100%);
+  --gradient-navy-mesh-bg: radial-gradient(at 100% 0%, rgba(36, 71, 168, 0.06) 0px, transparent 50%), radial-gradient(at 0% 100%, rgba(20, 38, 92, 0.05) 0px, transparent 50%), #F6F8FC;
+
+  --gradient-navy-badge: linear-gradient(135deg, #0B1537 0%, #14265C 60%, #2447A8 100%);
+  --gradient-navy-progress: linear-gradient(90deg, #0B1537 0%, #14265C 40%, #2447A8 100%);
+
+  --gradient-navy-glow: radial-gradient(circle, rgba(36, 71, 168, 0.18) 0%, transparent 70%);
+  --gradient-glow: var(--gradient-navy-glow);
+  --gradient-navy-highlight: linear-gradient(135deg, rgba(71, 120, 245, 0.25) 0%, rgba(36, 71, 168, 0.08) 100%);
+  --gradient-highlight: var(--gradient-navy-highlight);
+  --gradient-ambient: radial-gradient(circle at 10% 20%, rgba(71, 120, 245, 0.06) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(36, 71, 168, 0.05) 0%, transparent 40%);
+
+  /* ------------------------------------------------------------------------
+     3. Main Website Background & Layout Surfaces (Light Mode)
+     Clean, readable surfaces with subtle blue-tinted foundations
      ------------------------------------------------------------------------ */
   --background: #F6F8FC;
   --page-background: #F6F8FC;
@@ -45,7 +91,7 @@
   --backdrop: rgba(11, 21, 55, 0.25);
 
   /* ------------------------------------------------------------------------
-     3. Typography & Text Roles (Light Mode)
+     4. Typography & Text Hierarchy (Light Mode)
      ------------------------------------------------------------------------ */
   --foreground: #101828;
   --heading-foreground: #0B1537;
@@ -64,36 +110,22 @@
   --gradient-foreground: #FFFFFF;
 
   /* ------------------------------------------------------------------------
-     4. Brand & Ambient Gradients (Light Mode)
-     ------------------------------------------------------------------------ */
-  --gradient-brand: linear-gradient(135deg, #0B1537 0%, #14265C 50%, #2447A8 100%);
-  --gradient-primary-btn: linear-gradient(135deg, #14265C 0%, #2447A8 100%);
-  --gradient-primary-btn-hover: linear-gradient(135deg, #0B1537 0%, #1A3478 100%);
-  --gradient-sidebar: linear-gradient(180deg, #FFFFFF 0%, #F8FAFD 100%);
-  --gradient-sidebar-brand: linear-gradient(180deg, #0B1537 0%, #080F26 100%);
-  --gradient-active-nav: linear-gradient(135deg, rgba(36, 71, 168, 0.12) 0%, rgba(71, 120, 245, 0.06) 100%);
-  --gradient-card: linear-gradient(180deg, #FFFFFF 0%, #F9FBFE 100%);
-  --gradient-hero: radial-gradient(ellipse at 50% 0%, rgba(36, 71, 168, 0.08) 0%, rgba(246, 248, 252, 0) 70%), linear-gradient(180deg, #F0F4FC 0%, #F6F8FC 100%);
-  --gradient-ambient: radial-gradient(circle at 10% 20%, rgba(71, 120, 245, 0.06) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(36, 71, 168, 0.05) 0%, transparent 40%);
-  --gradient-highlight: linear-gradient(135deg, rgba(71, 120, 245, 0.25) 0%, rgba(36, 71, 168, 0.08) 100%);
-  --gradient-glow: radial-gradient(circle, rgba(36, 71, 168, 0.18) 0%, transparent 70%);
-
-  /* ------------------------------------------------------------------------
      5. Buttons (Light Mode)
      ------------------------------------------------------------------------ */
-  --btn-primary-bg: #14265C;
+  --btn-primary-bg: var(--gradient-navy-primary-btn);
   --btn-primary-fg: #FFFFFF;
-  --btn-primary-hover: #0B1537;
-  --btn-primary-active: #080F26;
+  --btn-primary-hover: var(--gradient-navy-primary-btn-hover);
+  --btn-primary-active: var(--gradient-navy-active-btn);
 
-  --btn-gradient-bg: var(--gradient-primary-btn);
+  --btn-gradient-bg: var(--gradient-navy-primary-btn);
   --btn-gradient-fg: #FFFFFF;
-  --btn-gradient-hover: var(--gradient-primary-btn-hover);
-  --btn-gradient-active: linear-gradient(135deg, #080F26 0%, #14265C 100%);
+  --btn-gradient-hover: var(--gradient-navy-primary-btn-hover);
+  --btn-gradient-active: var(--gradient-navy-active-btn);
 
   --btn-secondary-bg: #EEF2F8;
   --btn-secondary-fg: #14265C;
-  --btn-secondary-hover: #E2E9F4;
+  --btn-secondary-border: #D8E2F0;
+  --btn-secondary-hover: #E3ECF8;
   --btn-secondary-active: #D6E0EF;
 
   --btn-outline-bg: transparent;
@@ -119,7 +151,7 @@
   --btn-focus-ring: rgba(36, 71, 168, 0.35);
 
   /* ------------------------------------------------------------------------
-     6. Cards, Popovers & Surfaces (Light Mode)
+     6. Cards, Popovers, Dropdowns & Dialogs (Light Mode)
      ------------------------------------------------------------------------ */
   --card: #FFFFFF;
   --card-foreground: #101828;
@@ -145,6 +177,7 @@
   --tooltip-fg: #FFFFFF;
   --tooltip-border: #14265C;
 
+  /* Selected & Hover Surfaces */
   --surface-selected: #EAF0FF;
   --surface-selected-fg: #14265C;
   --surface-selected-border: #98B5FA;
@@ -195,24 +228,24 @@
   --form-error-bg: #FEF3F2;
 
   /* ------------------------------------------------------------------------
-     8. Navigation (Light Mode)
+     8. Navigation & Sidebar (Light Mode: Deep Navy Background, White Contrast)
      ------------------------------------------------------------------------ */
-  --sidebar: #FFFFFF;
-  --sidebar-background: #FFFFFF;
-  --sidebar-foreground: #344054;
-  --sidebar-muted: #667085;
-  --sidebar-heading: #0B1537;
-  --sidebar-hover-bg: #F0F4FA;
-  --sidebar-hover-fg: #14265C;
-  --sidebar-active-bg: #EAF0FF;
-  --sidebar-active-fg: #14265C;
-  --sidebar-active-text: #14265C;
-  --sidebar-border: #E4EAF3;
-  --sidebar-primary: #14265C;
+  --sidebar: #0B1537;
+  --sidebar-background: #0B1537;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-muted: rgba(255, 255, 255, 0.65);
+  --sidebar-heading: rgba(255, 255, 255, 0.45);
+  --sidebar-hover-bg: rgba(255, 255, 255, 0.08);
+  --sidebar-hover-fg: #FFFFFF;
+  --sidebar-active-bg: var(--gradient-active-nav);
+  --sidebar-active-fg: #FFFFFF;
+  --sidebar-active-text: #FFFFFF;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-primary: #2447A8;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F0F4FA;
-  --sidebar-accent-foreground: #14265C;
-  --sidebar-ring: #2447A8;
+  --sidebar-accent: rgba(255, 255, 255, 0.08);
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-ring: #4778F5;
 
   --topbar-bg: rgba(255, 255, 255, 0.88);
   --topbar-fg: #101828;
@@ -227,12 +260,52 @@
   --breadcrumb-active: #101828;
   --breadcrumb-separator: #98A2B3;
 
-  --mobile-nav-bg: #FFFFFF;
-  --mobile-nav-fg: #101828;
-  --mobile-nav-border: #E4EAF3;
+  --mobile-nav-bg: #0B1537;
+  --mobile-nav-fg: #FFFFFF;
+  --mobile-nav-border: rgba(255, 255, 255, 0.08);
 
   /* ------------------------------------------------------------------------
-     9. Data Visualization & Charts (Light Mode)
+     9. Badges & Labels (Light Mode)
+     ------------------------------------------------------------------------ */
+  --badge-primary-bg: var(--gradient-navy-badge);
+  --badge-primary-fg: #FFFFFF;
+  --badge-primary-border: transparent;
+
+  --badge-subtle-bg: #EAF0FF;
+  --badge-subtle-fg: #14265C;
+  --badge-subtle-border: #C6D8FF;
+
+  --badge-secondary-bg: #F1F4F9;
+  --badge-secondary-fg: #344054;
+  --badge-secondary-border: #E4EAF3;
+
+  --badge-success-bg: #ECFDF3;
+  --badge-success-fg: #027A48;
+  --badge-success-border: #A6F4C5;
+
+  --badge-warning-bg: #FFFAEB;
+  --badge-warning-fg: #B54708;
+  --badge-warning-border: #FEDF89;
+
+  --badge-error-bg: #FEF3F2;
+  --badge-error-fg: #B42318;
+  --badge-error-border: #FECDCA;
+
+  --badge-info-bg: #EFF8FF;
+  --badge-info-fg: #175CD3;
+  --badge-info-border: #B2DDFF;
+
+  /* ------------------------------------------------------------------------
+     10. Icons (Light Mode)
+     ------------------------------------------------------------------------ */
+  --icon-primary: #0B1537;
+  --icon-secondary: #344054;
+  --icon-muted: #667085;
+  --icon-brand: #2447A8;
+  --icon-on-gradient: #FFFFFF;
+
+  /* ------------------------------------------------------------------------
+     11. Data Visualization, Progress Bars & Charts (Light Mode)
      ------------------------------------------------------------------------ */
   --chart-1: #2447A8; /* Royal Blue */
   --chart-2: #4778F5; /* Accent Sky Blue */
@@ -253,49 +326,43 @@
 
   --progress-track: #E9EFF8;
   --progress-fill: #2447A8;
-  --progress-fill-gradient: linear-gradient(90deg, #14265C 0%, #4778F5 100%);
+  --progress-fill-gradient: var(--gradient-navy-progress);
 
   /* ------------------------------------------------------------------------
-     10. Status & Feedback (Light Mode)
+     12. Status & Feedback Colors (Light Mode)
      ------------------------------------------------------------------------ */
-  /* Success */
   --status-success-fg: #027A48;
   --status-success-bg: #ECFDF3;
   --status-success-border: #A6F4C5;
   --status-success-icon: #12B76A;
 
-  /* Warning */
   --status-warning-fg: #B54708;
   --status-warning-bg: #FFFAEB;
   --status-warning-border: #FEDF89;
   --status-warning-icon: #F79009;
 
-  /* Error & Destructive */
   --status-error-fg: #B42318;
   --status-error-bg: #FEF3F2;
   --status-error-border: #FECDCA;
   --status-error-icon: #F04438;
 
-  /* Information */
   --status-info-fg: #175CD3;
   --status-info-bg: #EFF8FF;
   --status-info-border: #B2DDFF;
   --status-info-icon: #2E90FA;
 
-  /* Pending */
   --status-pending-fg: #5925DC;
   --status-pending-bg: #F4F3FF;
   --status-pending-border: #D9D6FE;
   --status-pending-icon: #7A5AF8;
 
-  /* Neutral */
   --status-neutral-fg: #344054;
   --status-neutral-bg: #F8F9FC;
   --status-neutral-border: #EAECF0;
   --status-neutral-icon: #667085;
 
   /* ------------------------------------------------------------------------
-     11. Borders, Shadows & Effects (Light Mode)
+     13. Borders, Shadows & Ambient Effects (Light Mode)
      ------------------------------------------------------------------------ */
   --border: #E4EAF3;
   --border-strong: #CAD6E7;
@@ -316,36 +383,65 @@
   --scrollbar-thumb-hover: #9EAFC6;
 
   /* ------------------------------------------------------------------------
-     12. shadcn/ui Core Tokens (Light Mode)
+     14. shadcn/ui Core Tokens (Light Mode)
      ------------------------------------------------------------------------ */
   --primary: #14265C;
   --primary-foreground: #FFFFFF;
-
   --secondary: #EEF2F8;
   --secondary-foreground: #14265C;
-
   --muted: #F1F4F9;
-
   --accent: #EAF0FF;
   --accent-foreground: #14265C;
-
   --destructive: #DC2626;
   --destructive-foreground: #FFFFFF;
-
   --radius: 0.625rem;
 }
 
 /* ==========================================================================
    Dark Mode Theme Specifications
-   Target: Deep Navy Surfaces, Elevated Contrast, Controlled Luminescence
+   Target: Deep Navy Surfaces (#080F22, #101A32, #111D38) with Luminous Gradients
    ========================================================================== */
 
-.dark,
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
-    /* ------------------------------------------------------------------------
-       2. Page & Layout Surfaces (Dark Mode)
-       ------------------------------------------------------------------------ */
+    --gradient-navy-brand: linear-gradient(135deg, #0E1B42 0%, #162C6B 50%, #2851BD 100%);
+    --gradient-brand: var(--gradient-navy-brand);
+
+    --gradient-navy-primary-btn: linear-gradient(135deg, #14265C 0%, #20409A 50%, #3B6FD8 100%);
+    --gradient-navy-primary-btn-hover: linear-gradient(135deg, #1A3175 0%, #274DB8 50%, #487DF0 100%);
+    --gradient-navy-active-btn: linear-gradient(135deg, #0E1C45 0%, #172F73 50%, #2B55B0 100%);
+    --gradient-primary-btn: var(--gradient-navy-primary-btn);
+    --gradient-primary-btn-hover: var(--gradient-navy-primary-btn-hover);
+
+    --gradient-navy-card: linear-gradient(180deg, #111D38 0%, #0E172E 100%);
+    --gradient-navy-card-hover: linear-gradient(180deg, #152445 0%, #111D38 100%);
+    --gradient-card: var(--gradient-navy-card);
+
+    --gradient-sidebar-brand: linear-gradient(180deg, #091124 0%, #060C1B 50%, #040814 100%);
+    --gradient-navy-sidebar: var(--gradient-sidebar-brand);
+    --gradient-sidebar: var(--gradient-sidebar-brand);
+
+    --gradient-active-nav: linear-gradient(135deg, #1A3582 0%, #3B6FD8 100%);
+    --gradient-navy-active-nav: var(--gradient-active-nav);
+
+    --gradient-navy-selected-surface: linear-gradient(135deg, #15274E 0%, #1A3163 100%);
+    --gradient-selected-surface: var(--gradient-navy-selected-surface);
+
+    --gradient-navy-hero: radial-gradient(ellipse at 50% -10%, rgba(71, 120, 245, 0.20) 0%, rgba(8, 15, 34, 0) 70%), linear-gradient(180deg, #0D1730 0%, #080F22 100%);
+    --gradient-hero: var(--gradient-navy-hero);
+
+    --gradient-navy-subtle-bg: linear-gradient(180deg, #080F22 0%, #0B1537 100%);
+    --gradient-navy-mesh-bg: radial-gradient(at 100% 0%, rgba(71, 120, 245, 0.12) 0px, transparent 60%), radial-gradient(at 0% 100%, rgba(36, 71, 168, 0.16) 0px, transparent 60%), #080F22;
+
+    --gradient-navy-badge: linear-gradient(135deg, #14265C 0%, #20409A 60%, #3B6FD8 100%);
+    --gradient-navy-progress: linear-gradient(90deg, #2447A8 0%, #4778F5 100%);
+
+    --gradient-navy-glow: radial-gradient(circle, rgba(71, 120, 245, 0.28) 0%, transparent 70%);
+    --gradient-glow: var(--gradient-navy-glow);
+    --gradient-navy-highlight: linear-gradient(135deg, rgba(130, 167, 255, 0.30) 0%, rgba(71, 120, 245, 0.12) 100%);
+    --gradient-highlight: var(--gradient-navy-highlight);
+    --gradient-ambient: radial-gradient(circle at 10% 20%, rgba(71, 120, 245, 0.12) 0%, transparent 45%), radial-gradient(circle at 90% 80%, rgba(36, 71, 168, 0.10) 0%, transparent 45%);
+
     --background: #080F22;
     --page-background: #080F22;
     --content-background: #0D162C;
@@ -356,9 +452,6 @@
     --overlay: rgba(3, 7, 18, 0.75);
     --backdrop: rgba(3, 7, 18, 0.60);
 
-    /* ------------------------------------------------------------------------
-       3. Typography & Text Roles (Dark Mode)
-       ------------------------------------------------------------------------ */
     --foreground: #F3F6FC;
     --heading-foreground: #FFFFFF;
     --title-foreground: #F8FAFC;
@@ -375,37 +468,20 @@
     --primary-foreground: #FFFFFF;
     --gradient-foreground: #FFFFFF;
 
-    /* ------------------------------------------------------------------------
-       4. Brand & Ambient Gradients (Dark Mode)
-       ------------------------------------------------------------------------ */
-    --gradient-brand: linear-gradient(135deg, #101E42 0%, #1A3478 50%, #2A56C6 100%);
-    --gradient-primary-btn: linear-gradient(135deg, #2447A8 0%, #4778F5 100%);
-    --gradient-primary-btn-hover: linear-gradient(135deg, #2D54C2 0%, #5B8BF7 100%);
-    --gradient-sidebar: linear-gradient(180deg, #091124 0%, #060B18 100%);
-    --gradient-sidebar-brand: linear-gradient(180deg, #0A1329 0%, #060D1E 100%);
-    --gradient-active-nav: linear-gradient(135deg, rgba(71, 120, 245, 0.22) 0%, rgba(36, 71, 168, 0.12) 100%);
-    --gradient-card: linear-gradient(180deg, #13203E 0%, #101B34 100%);
-    --gradient-hero: radial-gradient(ellipse at 50% 0%, rgba(71, 120, 245, 0.16) 0%, rgba(8, 15, 34, 0) 70%), linear-gradient(180deg, #0C1630 0%, #080F22 100%);
-    --gradient-ambient: radial-gradient(circle at 10% 20%, rgba(71, 120, 245, 0.12) 0%, transparent 45%), radial-gradient(circle at 90% 80%, rgba(36, 71, 168, 0.10) 0%, transparent 45%);
-    --gradient-highlight: linear-gradient(135deg, rgba(130, 167, 255, 0.30) 0%, rgba(71, 120, 245, 0.12) 100%);
-    --gradient-glow: radial-gradient(circle, rgba(71, 120, 245, 0.28) 0%, transparent 70%);
-
-    /* ------------------------------------------------------------------------
-       5. Buttons (Dark Mode)
-       ------------------------------------------------------------------------ */
-    --btn-primary-bg: #3B6FD8;
+    --btn-primary-bg: var(--gradient-navy-primary-btn);
     --btn-primary-fg: #FFFFFF;
-    --btn-primary-hover: #4778F5;
-    --btn-primary-active: #2956BE;
+    --btn-primary-hover: var(--gradient-navy-primary-btn-hover);
+    --btn-primary-active: var(--gradient-navy-active-btn);
 
-    --btn-gradient-bg: var(--gradient-primary-btn);
+    --btn-gradient-bg: var(--gradient-navy-primary-btn);
     --btn-gradient-fg: #FFFFFF;
-    --btn-gradient-hover: var(--gradient-primary-btn-hover);
-    --btn-gradient-active: linear-gradient(135deg, #1D3A8A 0%, #3B6FD8 100%);
+    --btn-gradient-hover: var(--gradient-navy-primary-btn-hover);
+    --btn-gradient-active: var(--gradient-navy-active-btn);
 
     --btn-secondary-bg: #172442;
     --btn-secondary-fg: #EAF0FF;
-    --btn-secondary-hover: #1E2F56;
+    --btn-secondary-border: #2A3D63;
+    --btn-secondary-hover: #1E3056;
     --btn-secondary-active: #131E37;
 
     --btn-outline-bg: transparent;
@@ -430,9 +506,6 @@
 
     --btn-focus-ring: rgba(71, 120, 245, 0.45);
 
-    /* ------------------------------------------------------------------------
-       6. Cards, Popovers & Surfaces (Dark Mode)
-       ------------------------------------------------------------------------ */
     --card: #111D38;
     --card-foreground: #F3F6FC;
     --card-title: #FFFFFF;
@@ -462,9 +535,6 @@
     --surface-selected-border: #335ED8;
     --surface-hover: #152240;
 
-    /* ------------------------------------------------------------------------
-       7. Forms & Inputs (Dark Mode)
-       ------------------------------------------------------------------------ */
     --input: #0D162B;
     --input-bg: #0D162B;
     --input-foreground: #F3F6FC;
@@ -506,24 +576,21 @@
     --form-error-border: #991B1B;
     --form-error-bg: #2B1214;
 
-    /* ------------------------------------------------------------------------
-       8. Navigation (Dark Mode)
-       ------------------------------------------------------------------------ */
-    --sidebar: #0A1329;
-    --sidebar-background: #0A1329;
-    --sidebar-foreground: #D1DBEE;
-    --sidebar-muted: #7D8FA9;
-    --sidebar-heading: #9DB0D0;
-    --sidebar-hover-bg: #121E3B;
+    --sidebar: #091124;
+    --sidebar-background: #091124;
+    --sidebar-foreground: #FFFFFF;
+    --sidebar-muted: rgba(255, 255, 255, 0.65);
+    --sidebar-heading: rgba(255, 255, 255, 0.45);
+    --sidebar-hover-bg: rgba(255, 255, 255, 0.08);
     --sidebar-hover-fg: #FFFFFF;
-    --sidebar-active-bg: #172B56;
-    --sidebar-active-fg: #8AB2FF;
-    --sidebar-active-text: #8AB2FF;
-    --sidebar-border: #1B2742;
-    --sidebar-primary: #4778F5;
+    --sidebar-active-bg: var(--gradient-active-nav);
+    --sidebar-active-fg: #FFFFFF;
+    --sidebar-active-text: #FFFFFF;
+    --sidebar-border: rgba(255, 255, 255, 0.08);
+    --sidebar-primary: #3B6FD8;
     --sidebar-primary-foreground: #FFFFFF;
-    --sidebar-accent: #172B56;
-    --sidebar-accent-foreground: #8AB2FF;
+    --sidebar-accent: rgba(255, 255, 255, 0.08);
+    --sidebar-accent-foreground: #FFFFFF;
     --sidebar-ring: #4778F5;
 
     --topbar-bg: rgba(10, 19, 41, 0.88);
@@ -539,18 +606,49 @@
     --breadcrumb-active: #F3F6FC;
     --breadcrumb-separator: #48566E;
 
-    --mobile-nav-bg: #0A1329;
+    --mobile-nav-bg: #091124;
     --mobile-nav-fg: #F3F6FC;
-    --mobile-nav-border: #1B2742;
+    --mobile-nav-border: rgba(255, 255, 255, 0.08);
 
-    /* ------------------------------------------------------------------------
-       9. Data Visualization & Charts (Dark Mode)
-       ------------------------------------------------------------------------ */
-    --chart-1: #4778F5; /* Vibrant Blue */
-    --chart-2: #60A5FA; /* Sky Blue */
-    --chart-3: #14B8A6; /* Emerald Teal */
-    --chart-4: #818CF8; /* Electric Indigo */
-    --chart-5: #F43F5E; /* Vibrant Rose */
+    --badge-primary-bg: var(--gradient-navy-badge);
+    --badge-primary-fg: #FFFFFF;
+    --badge-primary-border: transparent;
+
+    --badge-subtle-bg: #132345;
+    --badge-subtle-fg: #8AB2FF;
+    --badge-subtle-border: #243B6E;
+
+    --badge-secondary-bg: #14203B;
+    --badge-secondary-fg: #D1DBEE;
+    --badge-secondary-border: #223152;
+
+    --badge-success-bg: #05281A;
+    --badge-success-fg: #6CE9A6;
+    --badge-success-border: #084C32;
+
+    --badge-warning-bg: #2B1E05;
+    --badge-warning-fg: #FEC84B;
+    --badge-warning-border: #5C3E08;
+
+    --badge-error-bg: #2E0F12;
+    --badge-error-fg: #FDA29B;
+    --badge-error-border: #5C1D24;
+
+    --badge-info-bg: #0C2340;
+    --badge-info-fg: #84CAFF;
+    --badge-info-border: #15477B;
+
+    --icon-primary: #F3F6FC;
+    --icon-secondary: #D1DBEE;
+    --icon-muted: #8E9EB8;
+    --icon-brand: #4778F5;
+    --icon-on-gradient: #FFFFFF;
+
+    --chart-1: #4778F5;
+    --chart-2: #60A5FA;
+    --chart-3: #14B8A6;
+    --chart-4: #818CF8;
+    --chart-5: #F43F5E;
 
     --chart-grid: #1C2945;
     --chart-axis: #8E9EB8;
@@ -565,50 +663,38 @@
 
     --progress-track: #172340;
     --progress-fill: #4778F5;
-    --progress-fill-gradient: linear-gradient(90deg, #2447A8 0%, #60A5FA 100%);
+    --progress-fill-gradient: var(--gradient-navy-progress);
 
-    /* ------------------------------------------------------------------------
-       10. Status & Feedback (Dark Mode)
-       ------------------------------------------------------------------------ */
-    /* Success */
     --status-success-fg: #6CE9A6;
     --status-success-bg: #05281A;
     --status-success-border: #084C32;
     --status-success-icon: #32D583;
 
-    /* Warning */
     --status-warning-fg: #FEC84B;
     --status-warning-bg: #2B1E05;
     --status-warning-border: #5C3E08;
     --status-warning-icon: #FDB022;
 
-    /* Error & Destructive */
     --status-error-fg: #FDA29B;
     --status-error-bg: #2E0F12;
     --status-error-border: #5C1D24;
     --status-error-icon: #F97066;
 
-    /* Information */
     --status-info-fg: #84CAFF;
     --status-info-bg: #0C2340;
     --status-info-border: #15477B;
     --status-info-icon: #53B1FD;
 
-    /* Pending */
     --status-pending-fg: #BDB4FE;
     --status-pending-bg: #1C1642;
     --status-pending-border: #3B2F7E;
     --status-pending-icon: #9B8AFB;
 
-    /* Neutral */
     --status-neutral-fg: #98A2B3;
     --status-neutral-bg: #111A2E;
     --status-neutral-border: #22304C;
     --status-neutral-icon: #667085;
 
-    /* ------------------------------------------------------------------------
-       11. Borders, Shadows & Effects (Dark Mode)
-       ------------------------------------------------------------------------ */
     --border: #263550;
     --border-strong: #34466B;
     --divider-subtle: #1B2742;
@@ -627,27 +713,58 @@
     --scrollbar-thumb: #1F2E4C;
     --scrollbar-thumb-hover: #314670;
 
-    /* ------------------------------------------------------------------------
-       12. shadcn/ui Core Tokens (Dark Mode)
-       ------------------------------------------------------------------------ */
     --primary: #4778F5;
     --primary-foreground: #FFFFFF;
-
     --secondary: #172442;
     --secondary-foreground: #EAF0FF;
-
     --muted: #15203D;
-
     --accent: #1B2A52;
     --accent-foreground: #EAF0FF;
-
     --destructive: #EF4444;
     --destructive-foreground: #FFFFFF;
   }
 }
 
-/* Fallback for explicit .dark class without media query */
+/* Explicit class-based dark mode override */
 .dark {
+  --gradient-navy-brand: linear-gradient(135deg, #0E1B42 0%, #162C6B 50%, #2851BD 100%);
+  --gradient-brand: var(--gradient-navy-brand);
+
+  --gradient-navy-primary-btn: linear-gradient(135deg, #14265C 0%, #20409A 50%, #3B6FD8 100%);
+  --gradient-navy-primary-btn-hover: linear-gradient(135deg, #1A3175 0%, #274DB8 50%, #487DF0 100%);
+  --gradient-navy-active-btn: linear-gradient(135deg, #0E1C45 0%, #172F73 50%, #2B55B0 100%);
+  --gradient-primary-btn: var(--gradient-navy-primary-btn);
+  --gradient-primary-btn-hover: var(--gradient-navy-primary-btn-hover);
+
+  --gradient-navy-card: linear-gradient(180deg, #111D38 0%, #0E172E 100%);
+  --gradient-navy-card-hover: linear-gradient(180deg, #152445 0%, #111D38 100%);
+  --gradient-card: var(--gradient-navy-card);
+
+  --gradient-sidebar-brand: linear-gradient(180deg, #091124 0%, #060C1B 50%, #040814 100%);
+  --gradient-navy-sidebar: var(--gradient-sidebar-brand);
+  --gradient-sidebar: var(--gradient-sidebar-brand);
+
+  --gradient-active-nav: linear-gradient(135deg, #1A3582 0%, #3B6FD8 100%);
+  --gradient-navy-active-nav: var(--gradient-active-nav);
+
+  --gradient-navy-selected-surface: linear-gradient(135deg, #15274E 0%, #1A3163 100%);
+  --gradient-selected-surface: var(--gradient-navy-selected-surface);
+
+  --gradient-navy-hero: radial-gradient(ellipse at 50% -10%, rgba(71, 120, 245, 0.20) 0%, rgba(8, 15, 34, 0) 70%), linear-gradient(180deg, #0D1730 0%, #080F22 100%);
+  --gradient-hero: var(--gradient-navy-hero);
+
+  --gradient-navy-subtle-bg: linear-gradient(180deg, #080F22 0%, #0B1537 100%);
+  --gradient-navy-mesh-bg: radial-gradient(at 100% 0%, rgba(71, 120, 245, 0.12) 0px, transparent 60%), radial-gradient(at 0% 100%, rgba(36, 71, 168, 0.16) 0px, transparent 60%), #080F22;
+
+  --gradient-navy-badge: linear-gradient(135deg, #14265C 0%, #20409A 60%, #3B6FD8 100%);
+  --gradient-navy-progress: linear-gradient(90deg, #2447A8 0%, #4778F5 100%);
+
+  --gradient-navy-glow: radial-gradient(circle, rgba(71, 120, 245, 0.28) 0%, transparent 70%);
+  --gradient-glow: var(--gradient-navy-glow);
+  --gradient-navy-highlight: linear-gradient(135deg, rgba(130, 167, 255, 0.30) 0%, rgba(71, 120, 245, 0.12) 100%);
+  --gradient-highlight: var(--gradient-navy-highlight);
+  --gradient-ambient: radial-gradient(circle at 10% 20%, rgba(71, 120, 245, 0.12) 0%, transparent 45%), radial-gradient(circle at 90% 80%, rgba(36, 71, 168, 0.10) 0%, transparent 45%);
+
   --background: #080F22;
   --page-background: #080F22;
   --content-background: #0D162C;
@@ -674,31 +791,20 @@
   --primary-foreground: #FFFFFF;
   --gradient-foreground: #FFFFFF;
 
-  --gradient-brand: linear-gradient(135deg, #101E42 0%, #1A3478 50%, #2A56C6 100%);
-  --gradient-primary-btn: linear-gradient(135deg, #2447A8 0%, #4778F5 100%);
-  --gradient-primary-btn-hover: linear-gradient(135deg, #2D54C2 0%, #5B8BF7 100%);
-  --gradient-sidebar: linear-gradient(180deg, #091124 0%, #060B18 100%);
-  --gradient-sidebar-brand: linear-gradient(180deg, #0A1329 0%, #060D1E 100%);
-  --gradient-active-nav: linear-gradient(135deg, rgba(71, 120, 245, 0.22) 0%, rgba(36, 71, 168, 0.12) 100%);
-  --gradient-card: linear-gradient(180deg, #13203E 0%, #101B34 100%);
-  --gradient-hero: radial-gradient(ellipse at 50% 0%, rgba(71, 120, 245, 0.16) 0%, rgba(8, 15, 34, 0) 70%), linear-gradient(180deg, #0C1630 0%, #080F22 100%);
-  --gradient-ambient: radial-gradient(circle at 10% 20%, rgba(71, 120, 245, 0.12) 0%, transparent 45%), radial-gradient(circle at 90% 80%, rgba(36, 71, 168, 0.10) 0%, transparent 45%);
-  --gradient-highlight: linear-gradient(135deg, rgba(130, 167, 255, 0.30) 0%, rgba(71, 120, 245, 0.12) 100%);
-  --gradient-glow: radial-gradient(circle, rgba(71, 120, 245, 0.28) 0%, transparent 70%);
-
-  --btn-primary-bg: #3B6FD8;
+  --btn-primary-bg: var(--gradient-navy-primary-btn);
   --btn-primary-fg: #FFFFFF;
-  --btn-primary-hover: #4778F5;
-  --btn-primary-active: #2956BE;
+  --btn-primary-hover: var(--gradient-navy-primary-btn-hover);
+  --btn-primary-active: var(--gradient-navy-active-btn);
 
-  --btn-gradient-bg: var(--gradient-primary-btn);
+  --btn-gradient-bg: var(--gradient-navy-primary-btn);
   --btn-gradient-fg: #FFFFFF;
-  --btn-gradient-hover: var(--gradient-primary-btn-hover);
-  --btn-gradient-active: linear-gradient(135deg, #1D3A8A 0%, #3B6FD8 100%);
+  --btn-gradient-hover: var(--gradient-navy-primary-btn-hover);
+  --btn-gradient-active: var(--gradient-navy-active-btn);
 
   --btn-secondary-bg: #172442;
   --btn-secondary-fg: #EAF0FF;
-  --btn-secondary-hover: #1E2F56;
+  --btn-secondary-border: #2A3D63;
+  --btn-secondary-hover: #1E3056;
   --btn-secondary-active: #131E37;
 
   --btn-outline-bg: transparent;
@@ -793,21 +899,21 @@
   --form-error-border: #991B1B;
   --form-error-bg: #2B1214;
 
-  --sidebar: #0A1329;
-  --sidebar-background: #0A1329;
-  --sidebar-foreground: #D1DBEE;
-  --sidebar-muted: #7D8FA9;
-  --sidebar-heading: #9DB0D0;
-  --sidebar-hover-bg: #121E3B;
+  --sidebar: #091124;
+  --sidebar-background: #091124;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-muted: rgba(255, 255, 255, 0.65);
+  --sidebar-heading: rgba(255, 255, 255, 0.45);
+  --sidebar-hover-bg: rgba(255, 255, 255, 0.08);
   --sidebar-hover-fg: #FFFFFF;
-  --sidebar-active-bg: #172B56;
-  --sidebar-active-fg: #8AB2FF;
-  --sidebar-active-text: #8AB2FF;
-  --sidebar-border: #1B2742;
-  --sidebar-primary: #4778F5;
+  --sidebar-active-bg: var(--gradient-active-nav);
+  --sidebar-active-fg: #FFFFFF;
+  --sidebar-active-text: #FFFFFF;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-primary: #3B6FD8;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #172B56;
-  --sidebar-accent-foreground: #8AB2FF;
+  --sidebar-accent: rgba(255, 255, 255, 0.08);
+  --sidebar-accent-foreground: #FFFFFF;
   --sidebar-ring: #4778F5;
 
   --topbar-bg: rgba(10, 19, 41, 0.88);
@@ -823,9 +929,43 @@
   --breadcrumb-active: #F3F6FC;
   --breadcrumb-separator: #48566E;
 
-  --mobile-nav-bg: #0A1329;
+  --mobile-nav-bg: #091124;
   --mobile-nav-fg: #F3F6FC;
-  --mobile-nav-border: #1B2742;
+  --mobile-nav-border: rgba(255, 255, 255, 0.08);
+
+  --badge-primary-bg: var(--gradient-navy-badge);
+  --badge-primary-fg: #FFFFFF;
+  --badge-primary-border: transparent;
+
+  --badge-subtle-bg: #132345;
+  --badge-subtle-fg: #8AB2FF;
+  --badge-subtle-border: #243B6E;
+
+  --badge-secondary-bg: #14203B;
+  --badge-secondary-fg: #D1DBEE;
+  --badge-secondary-border: #223152;
+
+  --badge-success-bg: #05281A;
+  --badge-success-fg: #6CE9A6;
+  --badge-success-border: #084C32;
+
+  --badge-warning-bg: #2B1E05;
+  --badge-warning-fg: #FEC84B;
+  --badge-warning-border: #5C3E08;
+
+  --badge-error-bg: #2E0F12;
+  --badge-error-fg: #FDA29B;
+  --badge-error-border: #5C1D24;
+
+  --badge-info-bg: #0C2340;
+  --badge-info-fg: #84CAFF;
+  --badge-info-border: #15477B;
+
+  --icon-primary: #F3F6FC;
+  --icon-secondary: #D1DBEE;
+  --icon-muted: #8E9EB8;
+  --icon-brand: #4778F5;
+  --icon-on-gradient: #FFFFFF;
 
   --chart-1: #4778F5;
   --chart-2: #60A5FA;
@@ -846,7 +986,7 @@
 
   --progress-track: #172340;
   --progress-fill: #4778F5;
-  --progress-fill-gradient: linear-gradient(90deg, #2447A8 0%, #60A5FA 100%);
+  --progress-fill-gradient: var(--gradient-navy-progress);
 
   --status-success-fg: #6CE9A6;
   --status-success-bg: #05281A;
@@ -898,29 +1038,25 @@
 
   --primary: #4778F5;
   --primary-foreground: #FFFFFF;
-
   --secondary: #172442;
   --secondary-foreground: #EAF0FF;
-
   --muted: #15203D;
-
   --accent: #1B2A52;
   --accent-foreground: #EAF0FF;
-
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
 }
 
 /* ==========================================================================
    Tailwind CSS v4 @theme inline Integration
-   Maps design tokens directly to Tailwind utility classes
+   Maps design system tokens directly to Tailwind utility classes
    ========================================================================== */
 
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* shadcn/ui and Standard Semantic Theme Colors */
+  /* Core shadcn/ui and Standard Semantic Theme Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
@@ -956,14 +1092,14 @@
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
 
-  /* Charts */
+  /* Chart Colors */
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
-  /* Sidebar */
+  /* Sidebar Tokens */
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -973,7 +1109,7 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Brand Foundation Utilities */
+  /* Brand Scale Utilities */
   --color-brand-deep-navy: var(--brand-deep-navy);
   --color-brand-primary-navy: var(--brand-primary-navy);
   --color-brand-royal-blue: var(--brand-royal-blue);
@@ -992,7 +1128,7 @@
   --color-brand-900: var(--brand-900);
   --color-brand-950: var(--brand-950);
 
-  /* Extended Semantic Surface Utilities */
+  /* Extended Surfaces */
   --color-page-bg: var(--page-background);
   --color-content-bg: var(--content-background);
   --color-secondary-bg: var(--secondary-background);
@@ -1002,7 +1138,7 @@
   --color-surface-selected: var(--surface-selected);
   --color-surface-hover: var(--surface-hover);
 
-  /* Extended Typography Utilities */
+  /* Extended Typography */
   --color-heading: var(--heading-foreground);
   --color-title: var(--title-foreground);
   --color-subtitle: var(--subtitle-foreground);
@@ -1014,11 +1150,29 @@
   --color-link-hover: var(--link-hover-foreground);
   --color-inverted: var(--inverted-foreground);
 
-  /* Extended Borders */
+  /* Badges */
+  --color-badge-primary: var(--badge-primary-bg);
+  --color-badge-primary-fg: var(--badge-primary-fg);
+  --color-badge-subtle: var(--badge-subtle-bg);
+  --color-badge-subtle-fg: var(--badge-subtle-fg);
+  --color-badge-subtle-border: var(--badge-subtle-border);
+  --color-badge-secondary: var(--badge-secondary-bg);
+  --color-badge-secondary-fg: var(--badge-secondary-fg);
+
+  /* Icons */
+  --color-icon-primary: var(--icon-primary);
+  --color-icon-secondary: var(--icon-secondary);
+  --color-icon-muted: var(--icon-muted);
+  --color-icon-brand: var(--icon-brand);
+
+  /* Borders & Dividers */
   --color-border-strong: var(--border-strong);
   --color-divider-subtle: var(--divider-subtle);
+  --color-card-border-hover: var(--card-border-hover);
+  --color-input-border-hover: var(--input-border-hover);
+  --color-input-border-focus: var(--input-border-focus);
 
-  /* Extended Status */
+  /* Status Colors */
   --color-status-success: var(--status-success-fg);
   --color-status-success-bg: var(--status-success-bg);
   --color-status-success-border: var(--status-success-border);
@@ -1049,6 +1203,10 @@
   --color-status-neutral-border: var(--status-neutral-border);
   --color-status-neutral-icon: var(--status-neutral-icon);
 
+  /* Progress & Data */
+  --color-progress-track: var(--progress-track);
+  --color-progress-fill: var(--progress-fill);
+
   /* Navigation Extended */
   --color-topbar-bg: var(--topbar-bg);
   --color-topbar-fg: var(--topbar-fg);
@@ -1062,56 +1220,249 @@
 }
 
 /* ==========================================================================
-   Reusable Gradient & Surface Utility Classes
+   Signature Navy-to-Royal-Blue Gradient Utility Classes
    ========================================================================== */
 
+/* Core brand identity gradient */
+.bg-gradient-navy,
 .bg-gradient-brand {
-  background-image: var(--gradient-brand);
+  background-image: var(--gradient-navy-brand);
 }
 
+/* Primary CTA button gradient */
+.bg-gradient-navy-btn,
 .bg-gradient-primary-btn {
-  background-image: var(--gradient-primary-btn);
+  background-image: var(--gradient-navy-primary-btn);
 }
 
+.bg-gradient-navy-btn:hover,
 .bg-gradient-primary-btn:hover {
-  background-image: var(--gradient-primary-btn-hover);
+  background-image: var(--gradient-navy-primary-btn-hover);
 }
 
-.bg-gradient-sidebar {
-  background-image: var(--gradient-sidebar);
+/* Subtle background gradient */
+.bg-gradient-navy-subtle {
+  background-image: var(--gradient-navy-subtle-bg);
 }
 
+/* Ambient mesh background */
+.bg-gradient-navy-mesh {
+  background-image: var(--gradient-navy-mesh-bg);
+}
+
+/* Surface card gradients */
+.bg-gradient-navy-card,
+.bg-gradient-card {
+  background-image: var(--gradient-navy-card);
+}
+
+.bg-gradient-navy-card:hover,
+.bg-gradient-card:hover {
+  background-image: var(--gradient-navy-card-hover);
+}
+
+/* Sidebar navigation gradients */
+.bg-gradient-navy-sidebar,
+.bg-gradient-sidebar,
+.bg-gradient-navy-sidebar-brand,
 .bg-gradient-sidebar-brand {
   background-image: var(--gradient-sidebar-brand);
 }
 
+/* Active navigation item gradient */
+.bg-gradient-navy-nav,
 .bg-gradient-active-nav {
   background-image: var(--gradient-active-nav);
 }
 
-.bg-gradient-card {
-  background-image: var(--gradient-card);
+/* Selected surface gradient */
+.bg-gradient-navy-selected,
+.bg-gradient-selected-surface {
+  background-image: var(--gradient-navy-selected-surface);
 }
 
+/* Hero section gradient */
+.bg-gradient-navy-hero,
 .bg-gradient-hero {
-  background-image: var(--gradient-hero);
+  background-image: var(--gradient-navy-hero);
+}
+
+/* Badge gradient */
+.bg-gradient-navy-badge {
+  background-image: var(--gradient-navy-badge);
+}
+
+/* Progress bar fill gradient */
+.bg-gradient-navy-progress {
+  background-image: var(--gradient-navy-progress);
+}
+
+/* Ambient & glow effects */
+.bg-gradient-navy-glow,
+.bg-gradient-glow {
+  background-image: var(--gradient-navy-glow);
+}
+
+.bg-gradient-navy-highlight,
+.bg-gradient-highlight {
+  background-image: var(--gradient-navy-highlight);
 }
 
 .bg-gradient-ambient {
   background-image: var(--gradient-ambient);
 }
 
-.bg-gradient-highlight {
-  background-image: var(--gradient-highlight);
+/* ==========================================================================
+   Sidebar-07 Navy Gradient Component Styling
+   Applies deep navy gradient, white contrast, and royal-blue active gradients
+   ========================================================================== */
+
+/* 1. Deep navy-to-dark-navy sidebar background gradient */
+[data-sidebar="sidebar"],
+[data-slot="sidebar-inner"],
+[data-slot="sidebar"][data-mobile="true"] {
+  background-image: var(--gradient-sidebar-brand) !important;
+  background-color: var(--sidebar-background) !important;
+  color: var(--sidebar-foreground) !important;
 }
 
-.bg-gradient-glow {
-  background-image: var(--gradient-glow);
+[data-slot="sidebar-container"] {
+  border-color: var(--sidebar-border);
+}
+
+/* Floating variant styling */
+[data-variant="floating"] [data-slot="sidebar-inner"] {
+  border: 1px solid var(--sidebar-border) !important;
+  box-shadow: 0 10px 30px -5px rgba(5, 11, 28, 0.45);
+}
+
+/* 2. Text, Headings & Icons in Sidebar */
+[data-sidebar="sidebar"] {
+  color: var(--sidebar-foreground);
+}
+
+[data-sidebar="sidebar"] [data-slot="sidebar-group-label"],
+[data-sidebar="sidebar"] [data-sidebar="group-label"] {
+  color: var(--sidebar-heading) !important;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+[data-sidebar="sidebar"] svg {
+  color: rgba(255, 255, 255, 0.70);
+  transition: color 0.15s ease;
+}
+
+/* 3. Active Navigation Item: Refined Royal-Blue Gradient */
+[data-sidebar="sidebar"] [data-active="true"],
+[data-sidebar="sidebar"] [data-sidebar="menu-button"][data-active="true"],
+[data-sidebar="sidebar"] [data-slot="sidebar-menu-button"][data-active="true"],
+[data-sidebar="sidebar"] [data-sidebar="menu-sub-button"][data-active="true"] {
+  background-image: var(--gradient-active-nav) !important;
+  color: #FFFFFF !important;
+  font-weight: 500;
+  box-shadow: 0 2px 8px -1px rgba(11, 21, 55, 0.5), 0 0 16px rgba(36, 71, 168, 0.35);
+}
+
+[data-sidebar="sidebar"] [data-active="true"] svg,
+[data-sidebar="sidebar"] [data-sidebar="menu-button"][data-active="true"] svg,
+[data-sidebar="sidebar"] [data-sidebar="menu-sub-button"][data-active="true"] svg {
+  color: #FFFFFF !important;
+}
+
+/* 4. Translucent White Hover States */
+[data-sidebar="sidebar"] [data-sidebar="menu-button"]:hover:not([data-active="true"]),
+[data-sidebar="sidebar"] [data-slot="sidebar-menu-button"]:hover:not([data-active="true"]),
+[data-sidebar="sidebar"] [data-sidebar="menu-sub-button"]:hover:not([data-active="true"]),
+[data-sidebar="sidebar"] [data-sidebar="menu-action"]:hover {
+  background-color: var(--sidebar-accent) !important;
+  color: #FFFFFF !important;
+}
+
+[data-sidebar="sidebar"] [data-sidebar="menu-button"]:hover:not([data-active="true"]) svg,
+[data-sidebar="sidebar"] [data-slot="sidebar-menu-button"]:hover:not([data-active="true"]) svg,
+[data-sidebar="sidebar"] [data-sidebar="menu-sub-button"]:hover:not([data-active="true"]) svg {
+  color: #FFFFFF !important;
+}
+
+/* 5. Team Switcher & User Profile */
+[data-sidebar="sidebar"] [data-slot="sidebar-header"] [data-sidebar="menu-button"][data-size="lg"],
+[data-sidebar="sidebar"] [data-slot="sidebar-footer"] [data-sidebar="menu-button"][data-size="lg"] {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-sidebar="sidebar"] [data-slot="sidebar-header"] [data-sidebar="menu-button"][data-size="lg"]:hover,
+[data-sidebar="sidebar"] [data-slot="sidebar-footer"] [data-sidebar="menu-button"][data-size="lg"]:hover {
+  background-color: var(--sidebar-accent) !important;
+}
+
+/* Brand icon box in team switcher */
+[data-sidebar="sidebar"] .bg-sidebar-primary {
+  background-image: var(--gradient-brand) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 6px rgba(11, 21, 55, 0.4);
+}
+
+/* 6. Subtle Separators & Borders */
+[data-sidebar="sidebar"] [data-slot="separator"],
+[data-sidebar="sidebar"] hr {
+  background-color: var(--sidebar-border) !important;
+}
+
+[data-sidebar="sidebar"] [data-slot="sidebar-menu-sub"] {
+  border-left-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-sidebar="rail"]::after {
+  background-color: var(--sidebar-border) !important;
+}
+
+[data-sidebar="rail"]:hover::after {
+  background-color: var(--brand-accent-blue) !important;
 }
 
 /* ==========================================================================
-   Section 5: Global Baseline Styling Rules
-   Respects semantic typography, text selection, focus outlines, and scrollbars
+   Main Dashboard Content Area Styling
+   ========================================================================== */
+
+/* Main content area with subtle navy-blue-tinted gradient background */
+[data-slot="sidebar-inset"] {
+  background-image: var(--gradient-navy-subtle-bg) !important;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Dashboard Top Header */
+[data-slot="sidebar-inset"] > header {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.dark [data-slot="sidebar-inset"] > header {
+  background-color: rgba(8, 15, 34, 0.85);
+  border-bottom-color: var(--border);
+}
+
+/* Dashboard Content Cards: Clean, readable, softly tinted surfaces */
+[data-slot="sidebar-inset"] .bg-muted\/50 {
+  background-color: var(--card) !important;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-subtle);
+}
+
+.dark [data-slot="sidebar-inset"] .bg-muted\/50 {
+  background-color: var(--card) !important;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   Global Baseline Styling Rules
+   Semantic typography, form control baselines, accessible selection & scrollbars
    ========================================================================== */
 
 * {
@@ -1138,20 +1489,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Headings: strong contrast, distinct hierarchy */
+/* Headings: deep navy contrast in light, luminous crisp white in dark */
 h1, h2, h3, h4, h5, h6 {
   color: var(--heading-foreground);
   font-weight: 600;
   letter-spacing: -0.02em;
 }
 
-/* Paragraphs: comfortable, highly readable */
+/* Paragraphs: comfortable, highly legible */
 p {
   color: var(--paragraph-foreground);
   line-height: 1.625;
 }
 
-/* Links: semantic brand royal blue with refined hover */
+/* Links: semantic royal blue with refined hover transition */
 a {
   color: var(--link-foreground);
   text-decoration: none;
@@ -1180,7 +1531,7 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 0 0 3px var(--input-ring);
 }
 
-/* Focus Visible outlines for accessible keyboard navigation */
+/* Focus Visible outlines for keyboard accessibility */
 :focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
@@ -1192,7 +1543,7 @@ input:focus, textarea:focus, select:focus {
   color: var(--selection-fg);
 }
 
-/* Custom Scrollbars */
+/* Custom Scrollbars matching the navy aesthetic */
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
