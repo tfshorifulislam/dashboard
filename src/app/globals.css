@@ -2,11 +2,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ==========================================================================
-   ClientSpace Global Color & Gradient Design System
-   Core Visual Identity: Deep Navy (#0B1537) -> Dark Royal Blue (#14265C) -> Elegant Blue (#2447A8)
-   Target: Premium, Trustworthy, Modern SaaS Dashboard
-   ========================================================================== */
 
 :root {
   /* ------------------------------------------------------------------------
@@ -31,10 +26,7 @@
   --brand-900: #0B1537;
   --brand-950: #080F22;
 
-  /* ------------------------------------------------------------------------
-     2. Signature Navy-to-Royal-Blue Gradients (Light Mode)
-     Progression: Deep Navy (#0B1537) -> Dark Royal Blue (#14265C) -> Elegant Blue (#2447A8)
-     ------------------------------------------------------------------------ */
+  
   --gradient-navy-brand: linear-gradient(135deg, #0B1537 0%, #14265C 50%, #2447A8 100%);
   --gradient-brand: var(--gradient-navy-brand);
 
@@ -186,7 +178,7 @@
   /* ------------------------------------------------------------------------
      7. Forms & Inputs (Light Mode)
      ------------------------------------------------------------------------ */
-  --input: #FFFFFF;
+  --input: #D8E1ED;
   --input-bg: #FFFFFF;
   --input-foreground: #101828;
   --input-placeholder: #98A2B3;
@@ -537,7 +529,7 @@
     --surface-selected-border: #335ED8;
     --surface-hover: #152240;
 
-    --input: #0D162B;
+    --input: #24334F;
     --input-bg: #0D162B;
     --input-foreground: #F3F6FC;
     --input-placeholder: #5E718D;
@@ -862,7 +854,7 @@
   --surface-selected-border: #335ED8;
   --surface-hover: #152240;
 
-  --input: #0D162B;
+  --input: #24334F;
   --input-bg: #0D162B;
   --input-foreground: #F3F6FC;
   --input-placeholder: #5E718D;
@@ -1361,9 +1353,17 @@
   text-transform: uppercase;
 }
 
-[data-sidebar="sidebar"] svg {
+[data-sidebar="sidebar"] [data-sidebar="menu-button"]:not([data-active="true"]) > svg,
+[data-sidebar="sidebar"] [data-slot="sidebar-menu-button"]:not([data-active="true"]) > svg,
+[data-sidebar="sidebar"] [data-sidebar="menu-sub-button"]:not([data-active="true"]) > svg {
   color: var(--sidebar-muted);
   transition: color 0.15s ease;
+}
+
+[data-sidebar="sidebar"] .bg-sidebar-primary svg,
+[data-sidebar="sidebar"] .text-white svg,
+[data-sidebar="sidebar"] svg.text-white {
+  color: #FFFFFF !important;
 }
 
 /* 3. Active Navigation Item: Subtle light-blue gradient in light mode, Royal-Blue Gradient in dark mode */

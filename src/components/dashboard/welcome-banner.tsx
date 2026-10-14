@@ -60,7 +60,7 @@ export function WelcomeBanner() {
           <Button
             variant="outline"
             onClick={() => setIsCreateClientOpen(true)}
-            className="border-white/20 bg-white/10 hover:bg-white/20 text-white font-medium text-xs sm:text-sm h-10 px-4 rounded-xl backdrop-blur-sm transition-all"
+            className="border-white/20 hover:border-white/40 bg-white/10 hover:bg-white/20 text-white hover:text-white font-medium text-xs sm:text-sm h-10 px-4 rounded-xl backdrop-blur-sm transition-all"
           >
             <UserPlus className="h-4 w-4 mr-1.5 text-blue-200" />
             <span>Invite Client</span>
