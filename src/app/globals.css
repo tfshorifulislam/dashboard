@@ -4,9 +4,7 @@
 
 
 :root {
-  /* ------------------------------------------------------------------------
-     1. Brand Foundation Palette (Canonical Navy & Royal Blue Scale)
-     ------------------------------------------------------------------------ */
+
   --brand-deep-navy: #0B1537;
   --brand-primary-navy: #14265C;
   --brand-royal-blue: #2447A8;
@@ -68,10 +66,7 @@
   --gradient-highlight: var(--gradient-navy-highlight);
   --gradient-ambient: radial-gradient(circle at 10% 20%, rgba(71, 120, 245, 0.06) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(36, 71, 168, 0.05) 0%, transparent 40%);
 
-  /* ------------------------------------------------------------------------
-     3. Main Website Background & Layout Surfaces (Light Mode)
-     Clean, readable surfaces with subtle blue-tinted foundations
-     ------------------------------------------------------------------------ */
+
   --background: #F6F8FC;
   --page-background: #F6F8FC;
   --content-background: #FFFFFF;
