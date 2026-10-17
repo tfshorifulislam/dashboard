@@ -28,8 +28,8 @@ export function WelcomeBanner() {
             <span>Agency Pro Workspace • All systems operational</span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
-            Welcome back, Alex 👋
+          <h1 className="text-2xl sm:text-3xl font-bold">
+            Welcome back, Alex
           </h1>
 
           <p className="text-sm sm:text-base text-blue-100/80 leading-relaxed">
