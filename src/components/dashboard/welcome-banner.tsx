@@ -6,17 +6,11 @@ import { Button } from "@/components/ui/button"
 import { useDashboard } from "@/context/dashboard-context"
 
 export function WelcomeBanner() {
-  const {
-    projects,
-    approvals,
-    setIsCreateProjectOpen,
-    setIsCreateClientOpen,
-  } = useDashboard()
-
-  const pendingApprovalsCount = approvals.filter((a) => a.status === "pending").length
+  const { projects, approvals, setIsCreateProjectOpen, setIsCreateClientOpen,} = useDashboard();
+  const pendingApprovalsCount = approvals.filter((a) => a.status === "pending").length;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0B1537] via-[#14265C] to-[#2447A8] p-6 sm:p-8 text-white shadow-xl shadow-blue-950/20 border border-blue-900/40">
+    <div className="relative overflow-hidden rounded-2xl bg-linear-to-r from-[#0B1537] via-[#14265C] to-[#2447A8] p-6 sm:p-8 text-white shadow-xl shadow-blue-950/20 border border-blue-900/40">
       {/* Decorative ambient background glows */}
       <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-blue-500/15 blur-3xl" />
       <div className="pointer-events-none absolute -left-10 -bottom-10 h-48 w-48 rounded-full bg-indigo-500/15 blur-2xl" />
