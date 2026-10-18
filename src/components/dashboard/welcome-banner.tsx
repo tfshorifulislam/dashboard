@@ -19,7 +19,7 @@ export function WelcomeBanner() {
         <div className="space-y-2 max-w-2xl">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-blue-200 border border-white/15 backdrop-blur-md">
             <Sparkles className="h-3.5 w-3.5 text-blue-300" />
-            <span>Agency Pro Workspace • All systems operational</span>
+            <span>Agency Pro Workspace All systems operational</span>
           </div>
 
           <h1 className="text-2xl sm:text-3xl font-bold">
